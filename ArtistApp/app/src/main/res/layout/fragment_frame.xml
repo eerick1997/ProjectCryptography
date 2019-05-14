@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ImageEditor.Principal.FrameFragment">
+    tools:context=".PhotoEditor.Principal.FrameFragment">
 
     <LinearLayout
         android:orientation="vertical"
@@ -20,7 +20,9 @@
             android:id="@+id/btn_add_frame"
             android:text="ADD FRAME"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:backgroundTint="white"
+            style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"/>
     </LinearLayout>
 
 </RelativeLayout>

@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    tools:context=".ImageEditor.Principal.EditImageFragment">
+    tools:context=".PhotoEditor.Principal.EditImageFragment">
 
     <LinearLayout
         android:orientation="vertical"

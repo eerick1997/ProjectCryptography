@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".ImageEditor.Principal.AddTextFragment">
+    tools:context=".PhotoEditor.Principal.AddTextFragment">
 
     <EditText
         android:id="@+id/edt_add_text"
@@ -27,9 +27,11 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_add_text"
         android:text="DONE"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:backgroundTint="white"
+        style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"/>
 </LinearLayout>

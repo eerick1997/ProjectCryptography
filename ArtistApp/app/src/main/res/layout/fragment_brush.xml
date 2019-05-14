@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".ImageEditor.Principal.BrushFragment">
+    tools:context=".PhotoEditor.Principal.BrushFragment">
 
     <LinearLayout
         android:orientation="vertical"
@@ -47,7 +47,9 @@
             android:textOff="Brush"
             android:textOn="Eraser"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:backgroundTint="white"
+            style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"/>
     </LinearLayout>
 
 
