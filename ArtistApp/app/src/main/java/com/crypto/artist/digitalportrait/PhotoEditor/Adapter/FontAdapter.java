@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class FontAdapter extends RecyclerView.Adapter<FontAdapter.FontViewHolder> {
