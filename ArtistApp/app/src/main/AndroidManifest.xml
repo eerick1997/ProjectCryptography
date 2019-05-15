@@ -3,7 +3,8 @@
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.crypto.artist.digitalportrait">
 
-    <dist:module dist:instant="true" /> <!-- Here we go to write our permissions -->
+    <!-- Here we go to write our permissions -->
+    <dist:module dist:instant="true" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />

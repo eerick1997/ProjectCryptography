@@ -48,7 +48,7 @@
             android:textOn="Eraser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="white"
+            android:backgroundTint="@color/button_background_color"
             style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"/>
     </LinearLayout>
 

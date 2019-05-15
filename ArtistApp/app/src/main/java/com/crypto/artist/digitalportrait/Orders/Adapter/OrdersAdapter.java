@@ -18,13 +18,14 @@ import java.util.List;
 public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewHolder> {
 
     Context context;
-    OrderAdapterClickListener listerner;
+    //OrderAdapterClickListener listerner;
     List<Order> orders;
     int rowSelected = -1;
 
-    public OrdersAdapter(Context context, OrderAdapterClickListener listerner) {
+    public OrdersAdapter(Context context, List<Order> orders/*, OrderAdapterClickListener listerner*/) {
         this.context = context;
-        this.listerner = listerner;
+        this.orders = orders;
+        //this.listerner = listerner;
     }
 
     @NonNull

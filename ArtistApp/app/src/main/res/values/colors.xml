@@ -7,4 +7,5 @@
     <color name="normal_filter">#8A8889</color>
     <color name="color_option_menu">#FF3990</color>
     <color name="card_background_color">#333639</color>
+    <color name="button_background_color">#FFFFFF</color>
 </resources>
