@@ -39,4 +39,12 @@ dependencies {
     implementation 'com.android.support:cardview-v7:28.0.0'
     implementation 'com.github.rockerhieu:emojicon:v1.4.2'
     implementation 'com.github.yalantis:ucrop:2.2.2-native'
+
+    //Google auth and firebase services
+    implementation 'com.google.firebase:firebase-core:16.0.9'
+    implementation 'com.google.firebase:firebase-auth:17.0.0'
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
+
 }
+
+apply plugin: 'com.google.gms.google-services'

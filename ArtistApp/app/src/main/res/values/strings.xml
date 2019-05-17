@@ -7,15 +7,11 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
-    <string name="menu_ordered">Ordenes</string>
-    <string name="menu_sent">Envios</string>
     <string name="btn_accept">Accept</string>
     <string name="btn_edit">Edit</string>
+    <string name="menu_ordered">Pedidos</string>
+    <string name="menu_sent">Enviados</string>
+    <string name="digital_portraits">Digital Portraits</string>
+    <string name="empecemos">¡Empecemos!</string>
+    <!-- <string name="default_web_client_id">AIzaSyDGTadYOH6amm9Z-HX8eHWqYTmWkftqVy0</string> -->
 </resources>

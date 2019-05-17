@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.crypto.artist.digitalportrait.Login.Login;
 import com.crypto.artist.digitalportrait.Orders.Principal.OrdersMain;
+import com.crypto.artist.digitalportrait.PhotoEditor.Principal.PhotoEditorMain;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class TestActivity extends AppCompatActivity {
@@ -19,7 +21,7 @@ public class TestActivity extends AppCompatActivity {
         FAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TestActivity.this, DrawerMain.class);
+                Intent intent = new Intent(TestActivity.this, Login.class);
                 startActivity(intent);
             }
         });
