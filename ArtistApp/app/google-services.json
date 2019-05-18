@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "71849093492-og7t3adh13avbp5ijftg32380uliu8mh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.crypto.artist.digitalportrait",
+            "certificate_hash": "59cd887129632bb5f150b0e11387354e1c4cc468"
+          }
+        },
+        {
           "client_id": "71849093492-5lb4linstbhss83lhj0apsap92s6fs9m.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

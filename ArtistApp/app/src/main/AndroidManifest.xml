@@ -32,7 +32,11 @@
         <activity
             android:name=".DrawerMain"
             android:label="@string/title_activity_drawer_main"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".PhotoEditor.Principal.PhotoEditorMain"
