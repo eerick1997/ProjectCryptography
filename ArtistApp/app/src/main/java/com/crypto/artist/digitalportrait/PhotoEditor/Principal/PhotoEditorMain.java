@@ -87,7 +87,7 @@ public class PhotoEditorMain extends AppCompatActivity implements FilterListFrag
         Toolbar toolbar = findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Edit images");
+        getSupportActionBar().setTitle(R.string.title_editor);
 
         photoEditorView = findViewById(R.id.image_preview);
         photoEditor = new PhotoEditor.Builder(this, photoEditorView)
@@ -317,7 +317,7 @@ public class PhotoEditorMain extends AppCompatActivity implements FilterListFrag
                             cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageSelectedUri);
                             startActivityForResult(cameraIntent, CAMERA_REQUEST);
                         } else {
-                            Toast.makeText(PhotoEditorMain.this, "Permission denied", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PhotoEditorMain.this, R.string.permission_denied, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -338,7 +338,7 @@ public class PhotoEditorMain extends AppCompatActivity implements FilterListFrag
                             intent.setType("image/*");
                             startActivityForResult(intent, PERMISSION_PICK_IMAGE);
                         } else {
-                            Toast.makeText(PhotoEditorMain.this, "Permission denied", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PhotoEditorMain.this, R.string.permission_denied, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -365,7 +365,7 @@ public class PhotoEditorMain extends AppCompatActivity implements FilterListFrag
                                         final String path = BitmapUtils.insertImage(getContentResolver(), saveBitmap,
                                                 System.currentTimeMillis() + "_profile.png", null);
                                         if (!TextUtils.isEmpty(path)){
-                                            Snackbar snackbar = Snackbar.make(coordinatorLayout, "Image saved to gallery",
+                                            Snackbar snackbar = Snackbar.make(coordinatorLayout, R.string.image_saved,
                                                     Snackbar.LENGTH_LONG).setAction("OPEN", new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View v) {
@@ -374,7 +374,7 @@ public class PhotoEditorMain extends AppCompatActivity implements FilterListFrag
                                             });
                                             snackbar.show();
                                         } else {
-                                            Snackbar snackbar = Snackbar.make(coordinatorLayout, "Unable to save image",
+                                            Snackbar snackbar = Snackbar.make(coordinatorLayout, R.string.image_not_saved,
                                                     Snackbar.LENGTH_LONG);
                                             snackbar.show();
                                         }
@@ -389,7 +389,7 @@ public class PhotoEditorMain extends AppCompatActivity implements FilterListFrag
                                 }
                             });
                         } else {
-                            Toast.makeText(PhotoEditorMain.this, "Permission denied", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PhotoEditorMain.this, R.string.permission_denied, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -461,7 +461,7 @@ public class PhotoEditorMain extends AppCompatActivity implements FilterListFrag
             filteredBitmap = originalBitmap;
             finalBitmap = originalBitmap;
         } else
-            Toast.makeText(this, "Cannot retreive crop image", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.cannot_retreive_image, Toast.LENGTH_SHORT).show();
     }
 
     private void handleCropError(Intent data) {
@@ -469,7 +469,7 @@ public class PhotoEditorMain extends AppCompatActivity implements FilterListFrag
         if (cropError != null)
             Toast.makeText(this, "" + cropError.getMessage(), Toast.LENGTH_SHORT).show();
         else
-            Toast.makeText(this, "Unexpected error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.cannot_retreive_image, Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -55,7 +55,7 @@
                         android:textSize="18sp"
                         android:textColor="@android:color/white"
                         android:textStyle="bold"
-                        android:text="Filters"
+                        android:text="@string/card_filters"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -88,7 +88,7 @@
                         android:textSize="18sp"
                         android:textColor="@android:color/white"
                         android:textStyle="bold"
-                        android:text="Edit"
+                        android:text="@string/card_edit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -121,7 +121,7 @@
                         android:textSize="18sp"
                         android:textColor="@android:color/white"
                         android:textStyle="bold"
-                        android:text="Brush"
+                        android:text="@string/card_brush"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -154,7 +154,7 @@
                         android:textSize="18sp"
                         android:textColor="@android:color/white"
                         android:textStyle="bold"
-                        android:text="Emoji"
+                        android:text="@string/card_emoji"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -187,7 +187,7 @@
                         android:textSize="18sp"
                         android:textColor="@android:color/white"
                         android:textStyle="bold"
-                        android:text="Text"
+                        android:text="@string/card_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -220,7 +220,7 @@
                         android:textSize="18sp"
                         android:textColor="@android:color/white"
                         android:textStyle="bold"
-                        android:text="Image"
+                        android:text="@string/card_image"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -253,7 +253,7 @@
                         android:textSize="18sp"
                         android:textColor="@android:color/white"
                         android:textStyle="bold"
-                        android:text="Frame"
+                        android:text="@string/card_frame"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -286,7 +286,7 @@
                         android:textSize="18sp"
                         android:textColor="@android:color/white"
                         android:textStyle="bold"
-                        android:text="Crop"
+                        android:text="@string/card_crop"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 

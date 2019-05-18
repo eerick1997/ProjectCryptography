@@ -38,12 +38,17 @@ public class DrawerMain extends AppCompatActivity
 
     private static final String TAG = "DrawerMain";
 
+    private int lastId = R.id.nav_ordered;
+    private static Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -66,6 +71,9 @@ public class DrawerMain extends AppCompatActivity
                 .override(270, 270)
                 .centerCrop()
                 .into(userProfileImage);
+
+        getSupportActionBar().setTitle(R.string.title_orders);
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new OrdersMain()).commit();
     }
 
     @Override
@@ -86,13 +94,17 @@ public class DrawerMain extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
         int id = item.getItemId();
 
-        if (id == R.id.nav_ordered) {
+        if (id == R.id.nav_ordered && lastId != R.id.nav_ordered) {
+            getSupportActionBar().setTitle(R.string.title_orders);
             getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new OrdersMain()).commit();
-        } else if (id == R.id.nav_sent) {
+            lastId = id;
+        } else if (id == R.id.nav_sent && lastId != R.id.nav_sent) {
+            getSupportActionBar().setTitle(R.string.title_sent);
             getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new OrdersMain()).commit();
+            lastId = id;
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

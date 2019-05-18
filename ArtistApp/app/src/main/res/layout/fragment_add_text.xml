@@ -11,7 +11,7 @@
     <EditText
         android:id="@+id/edt_add_text"
         android:scrollbars="vertical"
-        android:hint="Enter your text here"
+        android:hint="@string/type_text"
         android:maxHeight="200dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -29,7 +29,7 @@
 
     <Button
         android:id="@+id/btn_add_text"
-        android:text="DONE"
+        android:text="@string/done"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/button_background_color"
