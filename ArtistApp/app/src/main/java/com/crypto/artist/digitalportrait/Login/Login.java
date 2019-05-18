@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.crypto.artist.digitalportrait.DrawerMain;
 import com.crypto.artist.digitalportrait.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -24,6 +25,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+
+import static com.crypto.artist.digitalportrait.Utilities.Reference.EMAIL;
+import static com.crypto.artist.digitalportrait.Utilities.Reference.IMG_PROFILE;
+import static com.crypto.artist.digitalportrait.Utilities.Reference.USER_NAME;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
@@ -56,7 +61,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     protected void onStart() {
         try {
             FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-            //Log.i(TAG, "onStart: " + firebaseUser.getEmail());
+            if(firebaseUser != null){
+                Intent intent = new Intent(Login.this, DrawerMain.class);
+                intent.putExtra(USER_NAME, firebaseUser.getDisplayName());
+                intent.putExtra(EMAIL, firebaseUser.getEmail());
+                String photoUrl = firebaseUser.getPhotoUrl().toString();
+                intent.putExtra(IMG_PROFILE, ( (photoUrl.isEmpty()) ? "empty" : photoUrl ) );
+                startActivity(intent);
+            }
             //Maybe update the GUI
             super.onStart();
         } catch (Exception e){
@@ -93,9 +105,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             FirebaseUser user = firebaseAuth.getCurrentUser();
                             Log.i(TAG, "onComplete: " + user.getEmail());
                             //Maybe Update GUI
+                            Intent intent = new Intent(Login.this, DrawerMain.class);
+                            intent.putExtra(USER_NAME, user.getDisplayName());
+                            intent.putExtra(EMAIL, user.getEmail());
+                            startActivity(intent);
                         } else {
                             Log.w(TAG, "signInCredential:failure", task.getException());
-                            Toast.makeText(Login.this, "Autentication failed", Snackbar.LENGTH_LONG).show();
+                            Toast.makeText(Login.this, "Auth failed", Snackbar.LENGTH_LONG).show();
                             //Update GUI
                         }
                     }

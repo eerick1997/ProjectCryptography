@@ -45,6 +45,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:17.0.0'
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
 
+    //To manipulate some images
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    //Dimplementation 'com.github.bumptech.glide:glide:3.8.0'ownload images
+    implementation 'com.github.bumptech.glide:glide:3.8.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

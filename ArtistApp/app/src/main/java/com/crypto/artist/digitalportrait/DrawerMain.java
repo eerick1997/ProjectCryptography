@@ -2,6 +2,8 @@ package com.crypto.artist.digitalportrait;
 
 import android.os.Bundle;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.crypto.artist.digitalportrait.Orders.Principal.OrdersMain;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -22,15 +24,19 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
 import android.view.Menu;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
+import static com.crypto.artist.digitalportrait.Utilities.Reference.EMAIL;
+import static com.crypto.artist.digitalportrait.Utilities.Reference.IMG_PROFILE;
+import static com.crypto.artist.digitalportrait.Utilities.Reference.USER_NAME;
 
 public class DrawerMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "DrawerMain";
-
-    private FragmentManager fragmentManager;
-
-    private int lastID = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,21 @@ public class DrawerMain extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        View view = navigationView.getHeaderView(0);
+
+        TextView userName = view.findViewById(R.id.txt_user_name);
+        userName.setText(getIntent().getStringExtra(USER_NAME));
+        TextView email = view.findViewById(R.id.txt_email);
+        email.setText(getIntent().getStringExtra(EMAIL));
+        CircleImageView userProfileImage = view.findViewById(R.id.img_user_profile_image);
+        Glide.with(DrawerMain.this)
+                .load(getIntent().getStringExtra(IMG_PROFILE))
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .error(R.drawable.ic_person_black_24dp)
+                .override(270, 270)
+                .centerCrop()
+                .into(userProfileImage);
     }
 
     @Override
@@ -59,27 +80,19 @@ public class DrawerMain extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.drawer_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
