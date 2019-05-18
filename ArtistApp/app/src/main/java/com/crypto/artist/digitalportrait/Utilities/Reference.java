@@ -8,5 +8,7 @@ public class Reference {
     public static final String IMG_PROFILE = "IMG_PROFILE";
 
     // Firebase
-
+    public static final String USERS = "usuarios";
+    public static final String CLIENTS = "clientes";
+    public static final String CLIENTS1 = "cliente1";
 }

@@ -27,6 +27,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.crypto.artist.digitalportrait.Utilities.Reference.*;
+
 import java.util.concurrent.Executor;
 
 public class OrdersMain extends BottomSheetDialogFragment {
@@ -56,7 +59,7 @@ public class OrdersMain extends BottomSheetDialogFragment {
 
 
         FirebaseFirestore db= FirebaseFirestore.getInstance();
-        CollectionReference datosReference=db.collection("usuarios").document("clientes").collection("cliente1");
+        CollectionReference datosReference=db.collection(USERS).document(CLIENTS).collection(CLIENTS1);
         datosReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
@@ -79,8 +82,6 @@ public class OrdersMain extends BottomSheetDialogFragment {
                 recyclerOrders.setAdapter(ordersAdapter);
             }
         });
-
-
 
         return  itemView;
     }
