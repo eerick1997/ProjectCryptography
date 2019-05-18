@@ -37,4 +37,5 @@
     <string name="contrast">Contraste</string>
     <string name="saturation">Saturación</string>
     <string name="add_frame">Añadir marco</string>
+    <string name="loading">Espere un momento porfavor...</string>
 </resources>

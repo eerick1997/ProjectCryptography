@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,6 +39,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth firebaseAuth;
 
     private GoogleSignInClient googleSignInClient;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,20 +62,21 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onStart() {
         try {
-            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-            if(firebaseUser != null){
-                Intent intent = new Intent(Login.this, DrawerMain.class);
-                intent.putExtra(USER_NAME, firebaseUser.getDisplayName());
-                intent.putExtra(EMAIL, firebaseUser.getEmail());
-                String photoUrl = firebaseUser.getPhotoUrl().toString();
-                intent.putExtra(IMG_PROFILE, ( (photoUrl.isEmpty()) ? "empty" : photoUrl ) );
-                startActivity(intent);
+            FirebaseUser user = firebaseAuth.getCurrentUser();
+            if(user != null){
+                sendToAnActivity(user);
             }
             //Maybe update the GUI
             super.onStart();
         } catch (Exception e){
             Log.e(TAG, "onStart: ", e);
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        hide();
     }
 
     @Override
@@ -94,7 +97,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
         Log.d(TAG, "firebaseAuthWithGoogle: " + account.getId());
-
+        show();
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         firebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -104,11 +107,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             Log.d(TAG, "signInCredential:success");
                             FirebaseUser user = firebaseAuth.getCurrentUser();
                             Log.i(TAG, "onComplete: " + user.getEmail());
-                            //Maybe Update GUI
-                            Intent intent = new Intent(Login.this, DrawerMain.class);
-                            intent.putExtra(USER_NAME, user.getDisplayName());
-                            intent.putExtra(EMAIL, user.getEmail());
-                            startActivity(intent);
+                            sendToAnActivity(user);
                         } else {
                             Log.w(TAG, "signInCredential:failure", task.getException());
                             Toast.makeText(Login.this, "Auth failed", Snackbar.LENGTH_LONG).show();
@@ -133,6 +132,37 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         Toast.makeText(Login.this, "Sign out", Toast.LENGTH_LONG).show();
                     }
                 });
+    }
+
+    private void sendToAnActivity(FirebaseUser user){
+        Intent intent = new Intent(Login.this, DrawerMain.class);
+        intent.putExtra(USER_NAME, user.getDisplayName());
+        intent.putExtra(EMAIL, user.getEmail());
+        String photo;
+        try {
+            photo = user.getPhotoUrl().toString();
+        } catch (NullPointerException e){
+            Log.e(TAG, "sendToAnActivity: ", e);
+            photo = "empty";
+        }
+        intent.putExtra(IMG_PROFILE, photo);
+        startActivity(intent);
+    }
+
+    public void show(){
+        if (progressDialog == null){
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage(getString(R.string.loading));
+            progressDialog.setIndeterminate(true);
+        }
+
+        progressDialog.show();
+    }
+
+    public void hide(){
+        if (progressDialog != null && progressDialog.isShowing()){
+            progressDialog.dismiss();
+        }
     }
 
     @Override
