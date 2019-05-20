@@ -9,6 +9,8 @@ public class Reference {
 
     // Firebase
     public static final String USERS = "usuarios";
+    public static final String ARTISTAS="artistas";
+    public static final String ARTISTA="albertoesquivel.97@gmail.com";
     public static final String CLIENTS = "clientes";
     public static final String CLIENTS1 = "cliente1";
 }

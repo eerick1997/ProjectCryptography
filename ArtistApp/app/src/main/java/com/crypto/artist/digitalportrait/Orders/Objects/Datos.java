@@ -7,6 +7,7 @@ public class Datos {
     private String descripcion;
     private String fecha;
     private String imagen;
+    private String email;
     public Datos(){
 
     }
@@ -17,10 +18,11 @@ public class Datos {
     public void setDocumentId(String documentId){
         this.documentId=documentId;
     }
-    public Datos(String descripcion,String fecha,String imagen){
+    public Datos(String descripcion,String fecha,String imagen,String email){
         this.descripcion=descripcion;
         this.fecha=fecha;
         this.imagen=imagen;
+        this.email=email;
     }
 
     public String getDescripcion() {
@@ -45,5 +47,13 @@ public class Datos {
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

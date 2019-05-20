@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +30,8 @@ import java.util.List;
 
 import static com.crypto.artist.digitalportrait.Utilities.Reference.*;
 
+import java.util.concurrent.Executor;
+
 public class OrdersMain extends BottomSheetDialogFragment {
 
     private static final String TAG = "OrdersMain";
@@ -41,23 +43,14 @@ public class OrdersMain extends BottomSheetDialogFragment {
         View itemView = inflater.inflate(R.layout.activity_orders_main, container, false);
 
         final List<Order> orders = new ArrayList<>();
-        orders.add( new Order("Accepted", "15\\01\\2019") );
-        orders.add( new Order("Waiting", "15\\02\\2019") );
-        orders.add( new Order("Accepted", "15\\03\\2019") );
-        orders.add( new Order("Waiting", "15\\04\\2019") );
-        orders.add( new Order("Accepted", "15\\05\\2019") );
-        orders.add( new Order("Waiting", "15\\06\\2019") );
-        orders.add( new Order("Accepted", "15\\07\\2019") );
-        orders.add( new Order("Waiting", "15\\08\\2019") );
-        orders.add( new Order("Accepted", "15\\09\\2019") );
-        orders.add( new Order("Waiting", "15\\10\\2019") );
+
 
         final RecyclerView recyclerOrders = itemView.findViewById(R.id.recycler_orders);
 
 
 
         FirebaseFirestore db= FirebaseFirestore.getInstance();
-        CollectionReference datosReference=db.collection(USERS).document(CLIENTS).collection(CLIENTS1);
+        CollectionReference datosReference=db.collection(USERS).document(ARTISTAS).collection(ARTISTA);
         datosReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
@@ -71,7 +64,7 @@ public class OrdersMain extends BottomSheetDialogFragment {
 
                     orders.add(new Order(datos.getDescripcion(),datos.getFecha()));
                 }
-                Log.d(TAG, "onEvent: pedidos = " + orders);
+
                 //Creamos el adaptador
                 OrdersAdapter ordersAdapter = new OrdersAdapter(getContext(), orders);
                 //Colocamos el adaptador
