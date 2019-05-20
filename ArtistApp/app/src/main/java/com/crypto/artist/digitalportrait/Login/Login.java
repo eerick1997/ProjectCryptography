@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.crypto.artist.digitalportrait.CryptoUtils.Crypto;
 import com.crypto.artist.digitalportrait.DrawerMain;
 import com.crypto.artist.digitalportrait.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -48,6 +49,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         findViewById(R.id.btn_sign_in).setOnClickListener(this);
         findViewById(R.id.btn_sign_out).setOnClickListener(this);
+
+        Crypto.f();
 
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
