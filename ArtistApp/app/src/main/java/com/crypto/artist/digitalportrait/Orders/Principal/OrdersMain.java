@@ -30,8 +30,6 @@ import java.util.List;
 
 import static com.crypto.artist.digitalportrait.Utilities.Reference.*;
 
-import java.util.concurrent.Executor;
-
 public class OrdersMain extends BottomSheetDialogFragment {
 
     private static final String TAG = "OrdersMain";
