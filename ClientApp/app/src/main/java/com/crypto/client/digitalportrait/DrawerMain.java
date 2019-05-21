@@ -27,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import com.crypto.client.digitalportrait.Orders.Principal.OrdersMain;
 
 import static com.crypto.artist.digitalportrait.Utilities.Reference.EMAIL;
 import static com.crypto.artist.digitalportrait.Utilities.Reference.IMG_PROFILE;
@@ -72,7 +73,7 @@ public class DrawerMain extends AppCompatActivity
                 .into(userProfileImage);
 
         getSupportActionBar().setTitle(R.string.title_orders);
-        //getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new OrdersMain()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new OrdersMain()).commit();
     }
 
     @Override
@@ -98,11 +99,11 @@ public class DrawerMain extends AppCompatActivity
 
         if (id == R.id.nav_ordered && lastId != R.id.nav_ordered) {
             getSupportActionBar().setTitle(R.string.title_orders);
-            //getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new OrdersMain()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new OrdersMain()).commit();
             lastId = id;
         } else if (id == R.id.nav_sent && lastId != R.id.nav_sent) {
             getSupportActionBar().setTitle(R.string.title_sent);
-            //getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new OrdersMain()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new OrdersMain()).commit();
             lastId = id;
         }
 

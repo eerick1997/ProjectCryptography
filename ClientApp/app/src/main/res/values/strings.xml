@@ -38,4 +38,7 @@
     <string name="saturation">Saturación</string>
     <string name="add_frame">Añadir marco</string>
     <string name="loading">Espere un momento porfavor...</string>
+    <string name="title_activity_add_order">AddOrder</string>
+    <string name="txt_description">Descripción</string>
+    <string name="hint_description">Escribe la descripción de tu pedido aquí</string>
 </resources>
