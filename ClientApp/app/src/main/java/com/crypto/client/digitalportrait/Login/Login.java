@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.crypto.client.digitalportrait.DrawerMain;
 import com.crypto.client.digitalportrait.R;
-import com.crypto.client.digitalportrait.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
