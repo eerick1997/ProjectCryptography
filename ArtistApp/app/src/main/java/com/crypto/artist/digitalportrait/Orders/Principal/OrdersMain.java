@@ -151,8 +151,13 @@ public class OrdersMain extends BottomSheetDialogFragment {
             CipherParameters ivAndKey = new ParametersWithIV(new KeyParameter(password), iv);
 
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
+
             bmp.compress(Bitmap.CompressFormat.JPEG, 50, stream);
             byteArray[0] = stream.toByteArray();
+
+            //CAMBIOS
+            Log.i("BA",byteArray[0].toString());
+
             Bitmap compressedBitmap = BitmapFactory.decodeByteArray(byteArray[0], 0, byteArray[0].length);
             byte[] encryptedMessage = crypto.encrypt(byteArray[0],ivAndKey);
 
