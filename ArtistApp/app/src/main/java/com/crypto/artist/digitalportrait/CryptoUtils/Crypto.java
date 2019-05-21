@@ -1,19 +1,27 @@
 package com.crypto.artist.digitalportrait.CryptoUtils;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Environment;
 import android.util.Log;
 
-import com.crypto.artist.digitalportrait.PhotoEditor.Utils.BitmapUtils;
+import com.crypto.artist.digitalportrait.Login.Login;
 
 import org.apache.commons.codec.binary.Base64;
 import org.spongycastle.crypto.CipherParameters;
 import org.spongycastle.crypto.engines.AESEngine;
 import org.spongycastle.crypto.modes.CBCBlockCipher;
 import org.spongycastle.crypto.paddings.PaddedBufferedBlockCipher;
+import org.spongycastle.jcajce.provider.asymmetric.X509;
 import org.spongycastle.jce.provider.BouncyCastleProvider;
 
 import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
@@ -26,23 +34,17 @@ import java.security.spec.X509EncodedKeySpec;
 
 public class Crypto {
 
-    public static final String pictureName = "SDCARD0\\assets\\meme2.png";
+    private Context context;
+    private static final String ALGORITHM = "RSA";
+    private static final String ALGORITHM_SIGN = "SHA256withRSA";
+    private static final String PROVIDER = "SC";
+    private static final int KEY_SIZE = 1024;
 
-    public static void f(){
-        try {
-            String file = "matrix.png";
-            String[] arg = new String[3];
-            arg[0] = "suepk.txt";
-            arg[1] = "sig.txt";
-            arg[2] = "matrix.png";
-            signGen(file);
-            verify(arg);
-        } catch (Exception ex) {
-            Log.e("A", "f: ", ex);
-        }
+    public Crypto(Context context) {
+        this.context = context;
     }
 
-    public static byte[] cipherData(PaddedBufferedBlockCipher cipher, byte[] data) throws Exception {
+    public byte[] cipherData(PaddedBufferedBlockCipher cipher, byte[] data) throws Exception {
         byte[] outputBuffer = new byte[cipher.getOutputSize(data.length)];
 
         int length1 = cipher.processBytes(data,  0, data.length, outputBuffer, 0);
@@ -55,7 +57,7 @@ public class Crypto {
         return result;
     }
 
-    public static byte[] encrypt(byte[] plain, CipherParameters ivAndKey) throws Exception {
+    public byte[] encrypt(byte[] plain, CipherParameters ivAndKey) throws Exception {
         PaddedBufferedBlockCipher aes = new PaddedBufferedBlockCipher(
                 new CBCBlockCipher(
                         new AESEngine()
@@ -68,7 +70,7 @@ public class Crypto {
 
     }
 
-    public static byte[] decrypt(byte[] cipher, CipherParameters ivAndKey) throws Exception {
+    public byte[] decrypt(byte[] cipher, CipherParameters ivAndKey) throws Exception {
         PaddedBufferedBlockCipher aes = new PaddedBufferedBlockCipher(
                 new CBCBlockCipher(
                         new AESEngine()
@@ -79,8 +81,36 @@ public class Crypto {
         return cipherData(aes, cipher);
     }
 
+    public void signGenerator(Bitmap bitmap) throws Exception{
+        Security.insertProviderAt(new BouncyCastleProvider(), 1);
+        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(ALGORITHM, PROVIDER);
+        keyPairGenerator.initialize(KEY_SIZE, new SecureRandom());
+        KeyPair pair = keyPairGenerator.generateKeyPair();
+        PrivateKey privateKey = pair.getPrivate();
+        PublicKey publicKey = pair.getPublic();
+        Signature RSA = Signature.getInstance(ALGORITHM_SIGN, PROVIDER);
+        RSA.initSign(privateKey);
 
-    public static void signGen(String file) throws Exception
+        BufferedInputStream bufferedInputStream = fromBitmapToBIS(bitmap);
+
+        byte[] buffer = new byte[KEY_SIZE];
+        int length;
+        while(bufferedInputStream.available() != 0){
+            length = bufferedInputStream.read(buffer);
+            RSA.update(buffer, 0, length);
+        }
+
+        bufferedInputStream.close();
+        //Signature
+        Log.i("Crypto F1:", "signImage: " + Base64.encodeBase64(RSA.sign()));
+        //Public Key
+        Log.i("Crypto F2:", "signImage: " + Base64.encodeBase64(publicKey.getEncoded()));
+
+        //It's necessary store F1 and F2
+    }
+
+    //For RSA
+    public void signGen(String file) throws Exception
     {
         FileInputStream fis = new FileInputStream(file);
         Security.insertProviderAt(new BouncyCastleProvider(),1);
@@ -113,7 +143,42 @@ public class Crypto {
         System.out.println("Signature: "+f1+"\nPublic key: "+f2);
     }
 
-    public static void verify(String args[]) throws Exception {
+
+    public BufferedInputStream fromBitmapToBIS(Bitmap bitmap){
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        InputStream is = new ByteArrayInputStream(stream. toByteArray());
+        return new BufferedInputStream(is);
+    }
+
+    public boolean verifySign(Bitmap bitmap, byte[] sign, byte[] pubKey) throws Exception{
+        Security.insertProviderAt(new BouncyCastleProvider(), 1);
+        X509EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(Base64.decodeBase64(pubKey));
+        KeyFactory keyFactory = KeyFactory.getInstance(ALGORITHM, PROVIDER);
+        //Getting public key
+        PublicKey publicKey = keyFactory.generatePublic(publicKeySpec);
+
+        //Verify signature
+        Signature signature = Signature.getInstance(ALGORITHM_SIGN, PROVIDER);
+        signature.initVerify(publicKey);
+
+        BufferedInputStream bufferedInputStream = fromBitmapToBIS(bitmap);
+        byte[] buffer = new byte[KEY_SIZE];
+        int length;
+        while (bufferedInputStream.available() != 0){
+            length = bufferedInputStream.read(buffer);
+            signature.update(buffer, 0, length);
+        }
+
+        bufferedInputStream.close();
+        return (signature.verify(Base64.decodeBase64(sign)));
+    }
+
+    //For RSA
+    //args[0] public key
+    //args[1] signature
+    //args[2] image
+    public void verify(String args[]) throws Exception {
         FileInputStream keyfis = new FileInputStream(args[0]);
         byte[] encKey = new byte[keyfis.available()];
         keyfis.read(encKey);
