@@ -46,7 +46,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Login.Login" />
+        <activity
+            android:name=".Login.Login"
+            android:theme="@style/AppTheme.NoActionBar.FullScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
