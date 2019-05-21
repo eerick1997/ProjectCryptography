@@ -1,0 +1,429 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:2:1-32:12
+MERGED from [com.android.support:design:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/9acd637d8f09d204f183e89ab69bbb0b/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/02c3664cac13da5e08c3391dcee7db80/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/alberto/.gradle/caches/transforms-2/files-2.1/8143bdd063a7ec908fcd1880dc6e37ea/AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.firebase:firebase-firestore:15.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/3e862333d1f5f05ff0e4666ba2d22cf1/AndroidManifest.xml:2:1-8:12
+MERGED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:17:1-55:12
+MERGED from [com.google.firebase:firebase-analytics-impl:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/6b88c73e8883311147efbea8d397a6fa/AndroidManifest.xml:17:1-41:12
+MERGED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:17:1-65:12
+MERGED from [com.google.firebase:firebase-common:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/66790e514f27aaa6cdf3c83f03c974aa/AndroidManifest.xml:2:1-15:12
+MERGED from [com.google.firebase:firebase-iid-interop:15.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/a7eb411e30de907c2bbaf7006777c5da/AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.android.gms:play-services-base:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/c3b5ed2b18ff1f632aef448d7cddaf05/AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/3029c7dd02c6a480be04e00e5e13931a/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-database-collection:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/29c833fc3ff3177d590f61652586dad1/AndroidManifest.xml:2:1-8:12
+MERGED from [com.google.android.gms:play-services-stats:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/e95dd1622e01400a0777452f05b08b20/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-ads-identifier:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/cb374c098f305dec6672fab5ac707efb/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/cbdcb55e3937569baa0f0f6914111016/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:26.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/00d664013bed38fb67d3575eb87239b7/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-fragment:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/a62b51441bfcf0533ce7ad8772c8acfa/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/238d268d5b4d8807773b15cc40716817/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/efa5874f0497b361a48dcb643bbf1ccf/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/7ff890fdff7e9ae7a276bf8ed616914d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/39080dc75189e8a34096cc3a936c4633/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/2b6a1cda50baf41ee14daf66449acee8/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/ef720e46d0a95a5e472463ceab7941a4/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/39798a81036d4e258e5844a6616dd1d1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/a5d79233bfd8782393fba7a6cb7f410f/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/879112740c19c1e5ea2e56d959bd7a62/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/c6a30c26ce4b1657edb7fc2b86501d90/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/6bf092f715e1c96bf01a5bd024fb01c8/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/0b8ab0970a6315d3d718b20ef3776255/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/b7da7dbce886a461c58aa71199d0ec30/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/3b96012921c4bc44fa4ec4be5ebc1631/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/21ab19009d2ea4a2aa7026ccffe2ccd6/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-compat:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/1f1da00fab53a49bd8c58f42ca97d2e8/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/c2383996f7d03bbbb8844f50f82836eb/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/61af3dd12de5d1d3a9660a0a4e3ec016/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/5afb51b8430ff1606d09f4a93d28660c/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/7c050b758cc143c6caffb37f846ca501/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/a67bab2b5860daa9b014ae4298eb4823/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/8d892de986f3b4a06d155027241921ee/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/d8a4d2a3ed6c0a706b3bfc2f6286412a/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/9ded96910e78994c83b1d6cdc016f990/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/3cedf72ca2a06d0440c1b501e066e80a/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e3343c17fcfdef4b31d88185c274f08/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/8f922add715f08501f20dfa8063637f9/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/6de093a818aa39ebf8c1f81eb1a11706/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-measurement-base:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/454d9407085c8967f1f2502e906e3f79/AndroidManifest.xml:17:1-24:12
+INJECTED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:2:1-32:12
+	package
+		ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:3:5-48
+		INJECTED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml
+		INJECTED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml
+		ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:2:1-32:12
+		INJECTED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml
+		ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:2:1-32:12
+		INJECTED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:5:5-30:19
+MERGED from [com.android.support:design:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/9acd637d8f09d204f183e89ab69bbb0b/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/9acd637d8f09d204f183e89ab69bbb0b/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/alberto/.gradle/caches/transforms-2/files-2.1/8143bdd063a7ec908fcd1880dc6e37ea/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/alberto/.gradle/caches/transforms-2/files-2.1/8143bdd063a7ec908fcd1880dc6e37ea/AndroidManifest.xml:9:5-20
+MERGED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:28:5-53:19
+MERGED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:28:5-53:19
+MERGED from [com.google.firebase:firebase-analytics-impl:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/6b88c73e8883311147efbea8d397a6fa/AndroidManifest.xml:28:5-39:19
+MERGED from [com.google.firebase:firebase-analytics-impl:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/6b88c73e8883311147efbea8d397a6fa/AndroidManifest.xml:28:5-39:19
+MERGED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:34:5-63:19
+MERGED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:34:5-63:19
+MERGED from [com.google.firebase:firebase-common:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/66790e514f27aaa6cdf3c83f03c974aa/AndroidManifest.xml:7:5-13:19
+MERGED from [com.google.firebase:firebase-common:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/66790e514f27aaa6cdf3c83f03c974aa/AndroidManifest.xml:7:5-13:19
+MERGED from [com.google.firebase:firebase-iid-interop:15.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/a7eb411e30de907c2bbaf7006777c5da/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-iid-interop:15.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/a7eb411e30de907c2bbaf7006777c5da/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.android.gms:play-services-base:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/c3b5ed2b18ff1f632aef448d7cddaf05/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/c3b5ed2b18ff1f632aef448d7cddaf05/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/3029c7dd02c6a480be04e00e5e13931a/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/3029c7dd02c6a480be04e00e5e13931a/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-stats:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/e95dd1622e01400a0777452f05b08b20/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-stats:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/e95dd1622e01400a0777452f05b08b20/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-ads-identifier:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/cb374c098f305dec6672fab5ac707efb/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-ads-identifier:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/cb374c098f305dec6672fab5ac707efb/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/cbdcb55e3937569baa0f0f6914111016/AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/cbdcb55e3937569baa0f0f6914111016/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-v4:26.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/00d664013bed38fb67d3575eb87239b7/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:26.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/00d664013bed38fb67d3575eb87239b7/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/21ab19009d2ea4a2aa7026ccffe2ccd6/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/21ab19009d2ea4a2aa7026ccffe2ccd6/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/1f1da00fab53a49bd8c58f42ca97d2e8/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/1f1da00fab53a49bd8c58f42ca97d2e8/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/c2383996f7d03bbbb8844f50f82836eb/AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/c2383996f7d03bbbb8844f50f82836eb/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-measurement-base:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/454d9407085c8967f1f2502e906e3f79/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-measurement-base:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/454d9407085c8967f1f2502e906e3f79/AndroidManifest.xml:22:5-20
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/1f1da00fab53a49bd8c58f42ca97d2e8/AndroidManifest.xml:22:18-91
+	android:supportsRtl
+		ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:8:9-41
+	android:roundIcon
+		ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:9:9-54
+	android:icon
+		ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:11:9-40
+activity#com.crypto.client.digitalportrait.MainActivity
+ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:12:9-21:20
+	android:label
+		ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:14:13-45
+	android:theme
+		ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:15:13-56
+	android:name
+		ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:13:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:16:13-20:29
+action#android.intent.action.MAIN
+ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:17:17-69
+	android:name
+		ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:17:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:19:17-77
+	android:name
+		ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:19:27-74
+activity#com.crypto.client.digitalportrait.Lista_pedidos
+ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:22:9-28:20
+	android:name
+		ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml:22:19-48
+uses-sdk
+INJECTED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml
+INJECTED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:design:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/9acd637d8f09d204f183e89ab69bbb0b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/9acd637d8f09d204f183e89ab69bbb0b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/02c3664cac13da5e08c3391dcee7db80/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/02c3664cac13da5e08c3391dcee7db80/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/alberto/.gradle/caches/transforms-2/files-2.1/8143bdd063a7ec908fcd1880dc6e37ea/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/alberto/.gradle/caches/transforms-2/files-2.1/8143bdd063a7ec908fcd1880dc6e37ea/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:firebase-firestore:15.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/3e862333d1f5f05ff0e4666ba2d22cf1/AndroidManifest.xml:6:5-44
+MERGED from [com.google.firebase:firebase-firestore:15.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/3e862333d1f5f05ff0e4666ba2d22cf1/AndroidManifest.xml:6:5-44
+MERGED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-analytics-impl:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/6b88c73e8883311147efbea8d397a6fa/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-analytics-impl:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/6b88c73e8883311147efbea8d397a6fa/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-common:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/66790e514f27aaa6cdf3c83f03c974aa/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-common:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/66790e514f27aaa6cdf3c83f03c974aa/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-iid-interop:15.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/a7eb411e30de907c2bbaf7006777c5da/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-iid-interop:15.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/a7eb411e30de907c2bbaf7006777c5da/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/c3b5ed2b18ff1f632aef448d7cddaf05/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/c3b5ed2b18ff1f632aef448d7cddaf05/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/3029c7dd02c6a480be04e00e5e13931a/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/3029c7dd02c6a480be04e00e5e13931a/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-database-collection:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/29c833fc3ff3177d590f61652586dad1/AndroidManifest.xml:6:5-44
+MERGED from [com.google.firebase:firebase-database-collection:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/29c833fc3ff3177d590f61652586dad1/AndroidManifest.xml:6:5-44
+MERGED from [com.google.android.gms:play-services-stats:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/e95dd1622e01400a0777452f05b08b20/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-stats:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/e95dd1622e01400a0777452f05b08b20/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-ads-identifier:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/cb374c098f305dec6672fab5ac707efb/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-ads-identifier:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/cb374c098f305dec6672fab5ac707efb/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/cbdcb55e3937569baa0f0f6914111016/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/cbdcb55e3937569baa0f0f6914111016/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:26.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/00d664013bed38fb67d3575eb87239b7/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:26.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/00d664013bed38fb67d3575eb87239b7/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/a62b51441bfcf0533ce7ad8772c8acfa/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/a62b51441bfcf0533ce7ad8772c8acfa/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/238d268d5b4d8807773b15cc40716817/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/238d268d5b4d8807773b15cc40716817/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/efa5874f0497b361a48dcb643bbf1ccf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/efa5874f0497b361a48dcb643bbf1ccf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/7ff890fdff7e9ae7a276bf8ed616914d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/7ff890fdff7e9ae7a276bf8ed616914d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/39080dc75189e8a34096cc3a936c4633/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/39080dc75189e8a34096cc3a936c4633/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/2b6a1cda50baf41ee14daf66449acee8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/2b6a1cda50baf41ee14daf66449acee8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/ef720e46d0a95a5e472463ceab7941a4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/ef720e46d0a95a5e472463ceab7941a4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/39798a81036d4e258e5844a6616dd1d1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/39798a81036d4e258e5844a6616dd1d1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/a5d79233bfd8782393fba7a6cb7f410f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/a5d79233bfd8782393fba7a6cb7f410f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/879112740c19c1e5ea2e56d959bd7a62/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/879112740c19c1e5ea2e56d959bd7a62/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/c6a30c26ce4b1657edb7fc2b86501d90/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/c6a30c26ce4b1657edb7fc2b86501d90/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/6bf092f715e1c96bf01a5bd024fb01c8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/6bf092f715e1c96bf01a5bd024fb01c8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/0b8ab0970a6315d3d718b20ef3776255/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/0b8ab0970a6315d3d718b20ef3776255/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/b7da7dbce886a461c58aa71199d0ec30/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/b7da7dbce886a461c58aa71199d0ec30/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/3b96012921c4bc44fa4ec4be5ebc1631/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/3b96012921c4bc44fa4ec4be5ebc1631/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/21ab19009d2ea4a2aa7026ccffe2ccd6/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/21ab19009d2ea4a2aa7026ccffe2ccd6/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-compat:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/1f1da00fab53a49bd8c58f42ca97d2e8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/1f1da00fab53a49bd8c58f42ca97d2e8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/c2383996f7d03bbbb8844f50f82836eb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/c2383996f7d03bbbb8844f50f82836eb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/61af3dd12de5d1d3a9660a0a4e3ec016/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/61af3dd12de5d1d3a9660a0a4e3ec016/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/5afb51b8430ff1606d09f4a93d28660c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/5afb51b8430ff1606d09f4a93d28660c/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/7c050b758cc143c6caffb37f846ca501/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/7c050b758cc143c6caffb37f846ca501/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/a67bab2b5860daa9b014ae4298eb4823/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/a67bab2b5860daa9b014ae4298eb4823/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/8d892de986f3b4a06d155027241921ee/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/8d892de986f3b4a06d155027241921ee/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/d8a4d2a3ed6c0a706b3bfc2f6286412a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/d8a4d2a3ed6c0a706b3bfc2f6286412a/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/9ded96910e78994c83b1d6cdc016f990/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/9ded96910e78994c83b1d6cdc016f990/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/3cedf72ca2a06d0440c1b501e066e80a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/3cedf72ca2a06d0440c1b501e066e80a/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e3343c17fcfdef4b31d88185c274f08/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e3343c17fcfdef4b31d88185c274f08/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/8f922add715f08501f20dfa8063637f9/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/8f922add715f08501f20dfa8063637f9/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/6de093a818aa39ebf8c1f81eb1a11706/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/6de093a818aa39ebf8c1f81eb1a11706/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-base:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/454d9407085c8967f1f2502e906e3f79/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-base:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/454d9407085c8967f1f2502e906e3f79/AndroidManifest.xml:20:5-44
+INJECTED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml
+INJECTED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.android.support:support-v4:26.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/00d664013bed38fb67d3575eb87239b7/AndroidManifest.xml:23:9-51
+	android:targetSdkVersion
+		INJECTED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml
+		ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml
+		INJECTED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml
+		ADDED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml
+		INJECTED from /home/alberto/Documentos/Cliente/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/6b88c73e8883311147efbea8d397a6fa/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/6b88c73e8883311147efbea8d397a6fa/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:23:5-67
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:23:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-analytics-impl:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/6b88c73e8883311147efbea8d397a6fa/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-analytics-impl:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/6b88c73e8883311147efbea8d397a6fa/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:22:5-79
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:24:22-76
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:25:5-68
+MERGED from [com.google.firebase:firebase-analytics-impl:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/6b88c73e8883311147efbea8d397a6fa/AndroidManifest.xml:25:5-68
+MERGED from [com.google.firebase:firebase-analytics-impl:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/6b88c73e8883311147efbea8d397a6fa/AndroidManifest.xml:25:5-68
+MERGED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:24:5-68
+MERGED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:24:5-68
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:25:22-65
+uses-permission#com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE
+ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:26:5-110
+MERGED from [com.google.firebase:firebase-analytics-impl:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/6b88c73e8883311147efbea8d397a6fa/AndroidManifest.xml:26:5-110
+MERGED from [com.google.firebase:firebase-analytics-impl:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/6b88c73e8883311147efbea8d397a6fa/AndroidManifest.xml:26:5-110
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:26:22-107
+receiver#com.google.android.gms.measurement.AppMeasurementReceiver
+ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:29:9-33:20
+MERGED from [com.google.firebase:firebase-analytics-impl:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/6b88c73e8883311147efbea8d397a6fa/AndroidManifest.xml:29:9-33:20
+MERGED from [com.google.firebase:firebase-analytics-impl:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/6b88c73e8883311147efbea8d397a6fa/AndroidManifest.xml:29:9-33:20
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:31:13-35
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:32:13-37
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:30:13-85
+receiver#com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver
+ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:34:9-42:20
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:36:13-35
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:37:13-36
+	android:permission
+		ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:38:13-69
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:35:13-100
+intent-filter#action:name:com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:39:13-41:29
+action#com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:40:17-79
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:40:25-76
+service#com.google.android.gms.measurement.AppMeasurementService
+ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:44:9-47:40
+MERGED from [com.google.firebase:firebase-analytics-impl:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/6b88c73e8883311147efbea8d397a6fa/AndroidManifest.xml:35:9-38:40
+MERGED from [com.google.firebase:firebase-analytics-impl:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/6b88c73e8883311147efbea8d397a6fa/AndroidManifest.xml:35:9-38:40
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:46:13-35
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:47:13-37
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:45:13-84
+service#com.google.android.gms.measurement.AppMeasurementJobService
+ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:48:9-52:72
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:50:13-35
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:51:13-37
+	android:permission
+		ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:52:13-69
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:15.0.2] /home/alberto/.gradle/caches/transforms-2/files-2.1/bde413e0f9a4ca0e39cb17032b61ae67/AndroidManifest.xml:49:13-87
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:26:5-82
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:26:22-79
+permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:28:5-30:47
+	android:protectionLevel
+		ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:30:9-44
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:29:9-63
+permission#com.crypto.client.digitalportrait.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:28:5-30:47
+	android:protectionLevel
+		ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:30:9-44
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:29:9-63
+uses-permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:32:5-79
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:32:22-76
+uses-permission#com.crypto.client.digitalportrait.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:32:5-79
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:32:22-76
+service#com.google.firebase.components.ComponentDiscoveryService
+ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:35:9-39:19
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:35:18-89
+meta-data#com.google.firebase.components:com.google.firebase.iid.Registrar
+ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:36:13-38:85
+	android:value
+		ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:38:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:37:17-96
+receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
+ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:41:9-50:20
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:43:13-36
+	android:permission
+		ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:44:13-73
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:42:13-78
+intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE+category:name:${applicationId}
+ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:45:13-49:29
+intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE+category:name:com.crypto.client.digitalportrait
+ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:45:13-49:29
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:46:17-81
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:46:25-78
+category#${applicationId}
+ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:48:17-61
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:48:27-58
+category#com.crypto.client.digitalportrait
+ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:48:17-61
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:48:27-58
+service#com.google.firebase.iid.FirebaseInstanceIdService
+ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:56:9-62:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:58:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:57:13-77
+intent-filter#action:name:com.google.firebase.INSTANCE_ID_EVENT
+ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:59:13-61:29
+	android:priority
+		ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:59:28-51
+action#com.google.firebase.INSTANCE_ID_EVENT
+ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:60:17-80
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:15.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/4e960de8b4df95ca43175cbf5658cab2/AndroidManifest.xml:60:25-77
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/66790e514f27aaa6cdf3c83f03c974aa/AndroidManifest.xml:8:9-12:39
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/66790e514f27aaa6cdf3c83f03c974aa/AndroidManifest.xml:10:13-72
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/66790e514f27aaa6cdf3c83f03c974aa/AndroidManifest.xml:11:13-37
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/66790e514f27aaa6cdf3c83f03c974aa/AndroidManifest.xml:12:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-common:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/66790e514f27aaa6cdf3c83f03c974aa/AndroidManifest.xml:9:13-77
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/c3b5ed2b18ff1f632aef448d7cddaf05/AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/c3b5ed2b18ff1f632aef448d7cddaf05/AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/c3b5ed2b18ff1f632aef448d7cddaf05/AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/c3b5ed2b18ff1f632aef448d7cddaf05/AndroidManifest.xml:24:13-79
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/cbdcb55e3937569baa0f0f6914111016/AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/cbdcb55e3937569baa0f0f6914111016/AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:15.0.1] /home/alberto/.gradle/caches/transforms-2/files-2.1/cbdcb55e3937569baa0f0f6914111016/AndroidManifest.xml:24:13-58
+meta-data#android.support.VERSION
+ADDED from [com.android.support:support-v4:26.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/00d664013bed38fb67d3575eb87239b7/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/21ab19009d2ea4a2aa7026ccffe2ccd6/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/21ab19009d2ea4a2aa7026ccffe2ccd6/AndroidManifest.xml:26:9-28:38
+	android:value
+		ADDED from [com.android.support:support-v4:26.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/00d664013bed38fb67d3575eb87239b7/AndroidManifest.xml:28:13-35
+	android:name
+		ADDED from [com.android.support:support-v4:26.1.0] /home/alberto/.gradle/caches/transforms-2/files-2.1/00d664013bed38fb67d3575eb87239b7/AndroidManifest.xml:27:13-51

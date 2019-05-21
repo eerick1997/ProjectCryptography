@@ -49,8 +49,6 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 
-import static android.app.Activity.RESULT_OK;
-import static com.crypto.artist.digitalportrait.TestActivity.PERMISSION_PICK_IMAGE;
 import static com.crypto.artist.digitalportrait.Utilities.Reference.*;
 import org.spongycastle.crypto.CipherParameters;
 import org.spongycastle.crypto.params.KeyParameter;
@@ -67,8 +65,6 @@ public class OrdersMain extends BottomSheetDialogFragment {
     private static final String TAG = "OrdersMain";
     private static final int SELECT_FILE = 1;
     Bitmap originalBitmap, filteredBitmap, finalBitmap;
-    Uri imageSelectedUri;
-    private Bitmap bitmap;
     public static final String pictureName = "meme2.png";
 
     @SuppressLint("WrongConstant")
@@ -82,6 +78,9 @@ public class OrdersMain extends BottomSheetDialogFragment {
 
         final RecyclerView recyclerOrders = itemView.findViewById(R.id.recycler_orders);
 
+
+
+
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -89,7 +88,24 @@ public class OrdersMain extends BottomSheetDialogFragment {
                 Intent.createChooser(intent, "Seleccione una imagen"),
                 SELECT_FILE);
 
+
+
+
+
+
+
+
+
         FirebaseFirestore db= FirebaseFirestore.getInstance();
+
+
+
+
+
+
+
+
+
         CollectionReference datosReference=db.collection("pedidos");
         datosReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -131,17 +147,12 @@ public class OrdersMain extends BottomSheetDialogFragment {
             ivGen.init(128); //iv is 128 bits
 
             final byte[][] byteArray = {null};
-
-
             byte[] iv = ivGen.generateKey().getEncoded();
-
-
             CipherParameters ivAndKey = new ParametersWithIV(new KeyParameter(password), iv);
 
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
 
-            bmp.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-
+            bmp.compress(Bitmap.CompressFormat.JPEG, 50, stream);
             byteArray[0] = stream.toByteArray();
 
             //CAMBIOS
@@ -152,32 +163,37 @@ public class OrdersMain extends BottomSheetDialogFragment {
 
             Log.i("Encrypt:", String.valueOf(encryptedMessage));
 
-
-
-
-
-            //FECHA
             Calendar cal = new GregorianCalendar();
+
             Date date = cal.getTime();
+
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
             String formatteDate = df.format(date);
 
 
 
-            //FIRESTORE
 
 
-            Map<String, Object> pedido = new HashMap<>();
-            pedido.put("imagen", new String(Base64.encode(encryptedMessage)));
-            pedido.put("fecha", formatteDate );
-            pedido.put("descripcion","Prueba de correo");
-            pedido.put("email",getActivity().getIntent().getStringExtra(EMAIL));
-            pedido.put("sin",new String(Base64.encode(byteArray[0])));
+
+            Map<String, Object> city = new HashMap<>();
+            city.put("imagen", new String(Base64.encode(encryptedMessage)));
+            city.put("fecha", formatteDate );
+            city.put("descripcion","Prueba de correo");
+            city.put("email",getActivity().getIntent().getStringExtra(EMAIL));
+            city.put("sin",new String(Base64.encode(byteArray[0])));
+
+
+
+
+
+
+
 
             FirebaseFirestore db=FirebaseFirestore.getInstance();
 
             db.collection("pedidos")
-                    .add(pedido)
+                    .add(city)
                     .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
@@ -192,6 +208,27 @@ public class OrdersMain extends BottomSheetDialogFragment {
                     });
 
 
+/*
+
+            db.collection("pedidos").document("pedido4")
+                    .set(city)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d(TAG, "DocumentSnapshot successfully written!");
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w(TAG, "Error writing document", e);
+                        }
+                    });
+
+
+*/
+
+
 
 
 
@@ -203,20 +240,40 @@ public class OrdersMain extends BottomSheetDialogFragment {
             e.printStackTrace();
         }
     }
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(resultCode == RESULT_OK) {
-            if (requestCode == PERMISSION_PICK_IMAGE) {
-                Bitmap bitmap = BitmapUtils.getBitmapFromGallery(getContext(), data.getData(), 800, 800);
-                imageSelectedUri = data.getData();
-                Log.i(TAG, "onActivityResult: " + imageSelectedUri);
-                this.bitmap = bitmap;
-                loadImage(bitmap);
-            }
+    public void onActivityResult(int requestCode, int resultCode,
+                                 Intent imageReturnedIntent) {
+        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
+        Uri selectedImageUri = null;
+        Uri selectedImage;
+
+        String filePath = null;
+        switch (requestCode) {
+            case SELECT_FILE:
+                if (resultCode == Activity.RESULT_OK) {
+                    selectedImage = imageReturnedIntent.getData();
+                    String selectedPath=selectedImage.getPath();
+                    if (requestCode == SELECT_FILE) {
+
+                        if (selectedPath != null) {
+                            InputStream imageStream = null;
+                            try {
+                                imageStream = getContext().getContentResolver().openInputStream(
+                                        selectedImage);
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+
+                            // Transformamos la URI de la imagen a inputStream y este a un Bitmap
+                            Bitmap bmp = BitmapFactory.decodeStream(imageStream);
+
+                            loadImage(bmp);
+
+
+                        }
+                    }
+                }
+                break;
         }
-
-
-
     }
 
 
