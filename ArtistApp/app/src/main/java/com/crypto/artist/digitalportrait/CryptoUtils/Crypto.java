@@ -1,8 +1,11 @@
 package com.crypto.artist.digitalportrait.CryptoUtils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.util.Log;
+
+import com.crypto.artist.digitalportrait.Utilities.Preferences;
 
 import org.apache.commons.codec.binary.Base64;
 import org.spongycastle.crypto.CipherParameters;
@@ -39,15 +42,11 @@ public class Crypto {
     private byte[] publicKey;
     private byte[] privateKey;
     private byte[] signature;
-    private KeyStore keyStore;
+    private Preferences preferences;
 
     public Crypto(Context context) {
         this.context = context;
-        try {
-            this.keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
-        } catch (KeyStoreException e){
-            Log.w(TAG, "Crypto: ", e);
-        }
+        this.preferences = new Preferences(this.context);
     }
 
     public byte[] cipherData(PaddedBufferedBlockCipher cipher, byte[] data) throws Exception {
@@ -110,12 +109,13 @@ public class Crypto {
         this.signature = Base64.encodeBase64(RSA.sign());
         this.publicKey = Base64.encodeBase64(publicKey.getEncoded());
         this.privateKey = Base64.encodeBase64(privateKey.getEncoded());
-
+        preferences.store("signature", this.signature);
+        preferences.store("publicKey", this.publicKey);
+        preferences.store("privateKey", this.privateKey);
         //Signature
         Log.i("Crypto F1:", "signImage: " + this.signature);
         //Public Key
         Log.i("Crypto F2:", "signImage: " + this.publicKey);
-
         //It's necessary store F1 and F2
     }
 
@@ -127,9 +127,10 @@ public class Crypto {
         return new BufferedInputStream(is);
     }
 
-    public boolean verifySign(Bitmap bitmap, byte[] sign, byte[] pubKey) throws Exception{
+    /*, byte[] sign, byte[] pubKey*/
+    public boolean verifySign(Bitmap bitmap) throws Exception{
         Security.insertProviderAt(new BouncyCastleProvider(), 1);
-        X509EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(Base64.decodeBase64(pubKey));
+        X509EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(Base64.decodeBase64(new Preferences(context).get("publicKey")));
         KeyFactory keyFactory = KeyFactory.getInstance(ALGORITHM, PROVIDER);
         //Getting public key
         PublicKey publicKey = keyFactory.generatePublic(publicKeySpec);
@@ -145,19 +146,20 @@ public class Crypto {
             length = bufferedInputStream.read(buffer);
             signature.update(buffer, 0, length);
         }
-
         bufferedInputStream.close();
-        return (signature.verify(Base64.decodeBase64(sign)));
+        return (signature.verify(Base64.decodeBase64(new Preferences(context).get("signature"))));
     }
 
-    private String bytesToString(byte[] bytes){
-        if (bytes == null){
-            return null;
-        }
-        if (bytes.length == 0)
-            return "";
+    public byte[] getPublicKey() {
+        return publicKey;
+    }
 
-        return null;
+    public byte[] getPrivateKey() {
+        return privateKey;
+    }
+
+    public byte[] getSignature() {
+        return signature;
     }
 }
 
