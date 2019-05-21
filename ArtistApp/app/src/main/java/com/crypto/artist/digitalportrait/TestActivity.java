@@ -86,8 +86,8 @@ public class TestActivity extends AppCompatActivity {
         Crypto crypto = new Crypto(TestActivity.this);
         try {
             crypto.signGenerator(bitmap);
-           // boolean verify = crypto.verifySign(bitmap, crypto.getPrivateKey(), crypto.getPublicKey());
-            // Log.i(TAG, "onActivityResult: verify " + verify);
+            boolean verify = crypto.verifySign(bitmap);
+            Log.i(TAG, "onActivityResult: verify " + verify);
         } catch (Exception e){
             Log.e(TAG, "onActivityResult: ", e);
         }
