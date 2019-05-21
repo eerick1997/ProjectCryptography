@@ -7,17 +7,21 @@ public class Order {
     private String description;
     private String image;
     private String email;
+    private String sin;
+    private String keyAndIV;
 
     public  Order(){
         //Necessary to use firebase
     }
 
-    public Order(String status, String date, String description, String image, String email) {
+    public Order(String status, String date, String description, String image, String email,String sin,String keyAndIV) {
         this.status = status;
         this.date = date;
         this.description = description;
         this.image = image;
         this.email = email;
+        this.sin=sin;
+        this.keyAndIV=keyAndIV;
     }
 
     public Order(String status, String date) {
@@ -63,5 +67,20 @@ public class Order {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    public String getSin() {
+        return sin;
+    }
+
+    public void setSin(String sin) {
+        this.sin = sin;
+    }
+
+    public String getKeyAndIV() {
+        return keyAndIV;
+    }
+
+    public void setKeyAndIV(String keyAndIV) {
+        this.keyAndIV = keyAndIV;
     }
 }

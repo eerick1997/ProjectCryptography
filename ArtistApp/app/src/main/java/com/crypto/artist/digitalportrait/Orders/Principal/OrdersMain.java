@@ -152,7 +152,7 @@ public class OrdersMain extends BottomSheetDialogFragment {
 
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
 
-            bmp.compress(Bitmap.CompressFormat.JPEG, 50, stream);
+            bmp.compress(Bitmap.CompressFormat.JPEG, 10, stream);
             byteArray[0] = stream.toByteArray();
 
             //CAMBIOS
@@ -182,6 +182,7 @@ public class OrdersMain extends BottomSheetDialogFragment {
             city.put("descripcion","Prueba de correo");
             city.put("email",getActivity().getIntent().getStringExtra(EMAIL));
             city.put("sin",new String(Base64.encode(byteArray[0])));
+            city.put("keyAndIV",ivAndKey.toString());
 
 
 

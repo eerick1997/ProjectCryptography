@@ -8,6 +8,8 @@ public class Datos {
     private String fecha;
     private String imagen;
     private String email;
+    private String sin;
+    private String keyAndIV;
     public Datos(){
 
     }
@@ -18,11 +20,14 @@ public class Datos {
     public void setDocumentId(String documentId){
         this.documentId=documentId;
     }
-    public Datos(String descripcion,String fecha,String imagen,String email){
+    public Datos(String descripcion,String fecha,String imagen,String email,String sin,String keyAndIV){
         this.descripcion=descripcion;
         this.fecha=fecha;
         this.imagen=imagen;
         this.email=email;
+        this.sin=sin;
+        this.keyAndIV=keyAndIV;
+
     }
 
     public String getDescripcion() {
@@ -55,5 +60,21 @@ public class Datos {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSin() {
+        return sin;
+    }
+
+    public void setSin(String sin) {
+        this.sin = sin;
+    }
+
+    public String getKeyAndIV() {
+        return keyAndIV;
+    }
+
+    public void setKeyAndIV(String keyAndIV) {
+        this.keyAndIV = keyAndIV;
     }
 }
