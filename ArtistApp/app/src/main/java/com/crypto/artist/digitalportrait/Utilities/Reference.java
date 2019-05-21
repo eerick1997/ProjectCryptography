@@ -13,4 +13,7 @@ public class Reference {
     public static final String ARTISTA="albertoesquivel.97@gmail.com";
     public static final String CLIENTS = "clientes";
     public static final String CLIENTS1 = "cliente1";
+
+    // Preferences
+    public static final String NAME_PREFERENCES = "keys";
 }

@@ -50,7 +50,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         findViewById(R.id.btn_sign_in).setOnClickListener(this);
         findViewById(R.id.btn_sign_out).setOnClickListener(this);
 
-        new Crypto(getBaseContext()).f();
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
