@@ -40,7 +40,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="TUlJQ2R3SUJBREFOQmdrcWhraUc5dzBCQVFFRkFBU0NBbUV3Z2dKZEFnRUFBb0dCQU4yWUdabndHY00vU2VXV3FSR25IbWcxSXhyU3ZYdDJyTDdwNTAzVStLdHZ0VElRRVBZUzdQNk80R1dLT0FHditsc3dzN2tVQkhQZnhkdHZpb2p4VUUzZEttMnNZbC82Z3p6dDVyYm1MOFFkK2wyZzdGNFBDWGF5WEJ3bWRMQmJIRTZjTEdLWHp6bHNxbjhVNE9lY1FQRVBzc3hCTGxXd3g3aE5NTDlMcDY3bEFnTUJBQUVDZ1lBb1Q4UnVoT2VHNWFOSmxUSWVFRDhmbVhVUXF1QkdEdFdIcUpFSHozUEthamkyQ2dhdjRVc0VWeFVhMjcxckR5cTEvcUxmU3pVeEtEYjcvNnRkMUxwMURSQnBnZ1hrYk0veTFOeVRtcE00Zkpqam5kR1lpTk4vNm5aSlFKaDFBTzlaR2VwVVRzc01XV3pYY2k5NWdzM0NQaHBRbzlNNUs2RWU1TG5lTlJpcU9RSkJBUFh0YUV6VFhSK1RKbDFkUnJrV1BpS1NHMlBielB6RmVEb2JuUldYL0VGLzFHSllieEFURnNOSWp4aFFrRklpMGFFcno5VFhSeWZ1ZUxPWGN6TDlISDBDUVFEbXE0M2xoRWFxaldpTGpxYkFJdGl4U0JsaCtnZDB2NUFVcGNtK2h1QS83cGtidmJ1MXZpUFgzR2lMQ1FpUFpldVpwMHFmZFV1ak9nWTVPQzNERERDSkFrRUFueC9uSGRhaGFiM0gxQjkzbEdrTStVZDZpNGw4UUkzeE5nQUtDeC9WYS9ndlR4Y1RmZDRzRzEyR29WLzNrZjNQa0M2T0FwVHRDS3huMHlTS3VKSkg3UUpBQ05XZE02TWpTYmpzdmh1U2kxMUtTMC9sbVBrSWZCSXlKSGhOQjcwR3Jhd250UVpKUUNhdUhNQldTS3pwNVFRVVIrZytWV2thb24vQWFVU2JqQkxWY1FKQkFNRExDcUpiMnVkaWoyMXZmRlZHZGplaGZLcmVxRDdkbUpNKys0OE5OcVlNOE9xVHNjRU92ekc3OUd3RlhTbnRhQld4djQxMjRBc0JkcUpJRDhPNGplST0=" />
+                android:hint="password"
+                />
 
             <EditText
                 android:id="@+id/eIV"
@@ -48,8 +49,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-
-                android:text="C1WZi6jf9Ssnz6rVDhFMfg=="/>
+                android:hint="IV"
+                />
 
             <Button
                 android:id="@+id/btn_order_edit"
