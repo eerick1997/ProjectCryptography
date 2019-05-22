@@ -10,6 +10,9 @@ public class Datos {
     private String email;
     private String sin;
     private String keyAndIV;
+    private String estado;
+    private String password;
+    private String iv;
     public Datos(){
 
     }
@@ -20,15 +23,17 @@ public class Datos {
     public void setDocumentId(String documentId){
         this.documentId=documentId;
     }
-    public Datos(String descripcion,String fecha,String imagen,String email,String sin,String keyAndIV){
+    public Datos(String descripcion,String fecha,String imagen,String email,String sin,String keyAndIV,String password,String iv){
         this.descripcion=descripcion;
         this.fecha=fecha;
         this.imagen=imagen;
         this.email=email;
         this.sin=sin;
         this.keyAndIV=keyAndIV;
-
+        this.password=password;
+        this.iv=iv;
     }
+
 
     public String getDescripcion() {
         return descripcion;
@@ -76,5 +81,29 @@ public class Datos {
 
     public void setKeyAndIV(String keyAndIV) {
         this.keyAndIV = keyAndIV;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getIv() {
+        return iv;
+    }
+
+    public void setIv(String iv) {
+        this.iv = iv;
     }
 }

@@ -10,7 +10,7 @@ public class Order {
     private String sin;
     private String keyAndIV;
 
-    public  Order(){
+    public  Order(String descripcion, String fecha, String imagen, String email, String sin, String keyAndIV){
         //Necessary to use firebase
     }
 

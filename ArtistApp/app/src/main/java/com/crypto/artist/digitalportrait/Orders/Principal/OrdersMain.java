@@ -73,7 +73,7 @@ public class OrdersMain extends BottomSheetDialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View itemView = inflater.inflate(R.layout.activity_orders_main, container, false);
 
-        final List<Order> orders = new ArrayList<>();
+        final List<Datos> orders = new ArrayList<>();
 
 
         final RecyclerView recyclerOrders = itemView.findViewById(R.id.recycler_orders);
@@ -117,7 +117,7 @@ public class OrdersMain extends BottomSheetDialogFragment {
                 for(QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots) {
                     Datos datos = documentSnapshot.toObject(Datos.class);
                     datos.setDocumentId(documentSnapshot.getId());
-                    orders.add(new Order(datos.getDescripcion(),datos.getFecha()));
+                    orders.add(new Datos(datos.getDescripcion(),datos.getFecha(),datos.getImagen(),datos.getEmail(),datos.getSin(),datos.getKeyAndIV(),datos.getPassword(),datos.getIv()));
                 }
 
                 //Creamos el adaptador
@@ -141,18 +141,23 @@ public class OrdersMain extends BottomSheetDialogFragment {
             keyGen = KeyGenerator.getInstance("AES");
 
             keyGen.init(256); //key is 256 bits
+
             byte[] password = keyGen.generateKey().getEncoded();
 
             KeyGenerator ivGen = KeyGenerator.getInstance("AES");
             ivGen.init(128); //iv is 128 bits
 
             final byte[][] byteArray = {null};
+
+
             byte[] iv = ivGen.generateKey().getEncoded();
+
+
             CipherParameters ivAndKey = new ParametersWithIV(new KeyParameter(password), iv);
 
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
 
-            bmp.compress(Bitmap.CompressFormat.JPEG, 10, stream);
+            bmp.compress(Bitmap.CompressFormat.JPEG, 70, stream);
             byteArray[0] = stream.toByteArray();
 
             //CAMBIOS
@@ -183,6 +188,8 @@ public class OrdersMain extends BottomSheetDialogFragment {
             city.put("email",getActivity().getIntent().getStringExtra(EMAIL));
             city.put("sin",new String(Base64.encode(byteArray[0])));
             city.put("keyAndIV",ivAndKey.toString());
+            city.put("password",new String(Base64.encode(password)));
+            city.put("iv",new String(Base64.encode(iv)));
 
 
 
