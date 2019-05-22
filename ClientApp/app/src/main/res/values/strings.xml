@@ -45,4 +45,6 @@
     <string name="fill_description">Se requiere de la descripción</string>
     <string name="order_sent_successfully">El pedido se ha realizado exitosamente</string>
     <string name="order_not_sent_successfully">Ha ocurrido un error al solicitar el pedido, intentalo más tarde</string>
+    <string name="menu_pending">Pendientes</string>
+    <string name="title_pending">Pendientes</string>
 </resources>

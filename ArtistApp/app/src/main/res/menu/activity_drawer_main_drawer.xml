@@ -5,6 +5,11 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_contract"
+            android:icon="@drawable/ic_insert_drive_file_black_24dp"
+            android:title="@string/contracts"/>
+
+        <item
             android:id="@+id/nav_ordered"
             android:icon="@drawable/ic_check_black_24dp"
             android:title="@string/menu_ordered" />

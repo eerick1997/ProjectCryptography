@@ -26,25 +26,25 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txt_status"
+                android:id="@+id/txt_user_name_contract"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:paddingLeft="5dp"
                 android:paddingRight="2dp"
                 android:text="Editing" />
 
             <Button
-                android:id="@+id/btn_order_edit"
+                android:id="@+id/btn_accept_contract"
                 style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
+
                 android:layout_alignBottom="@id/txt_status"
                 android:backgroundTint="@color/button_background_color"
                 android:clickable="true"
                 android:fontFamily="@font/roboto_medium"
-                android:text="@string/btn_edit"/>
+                android:text="@string/btn_accept"/>
         </LinearLayout>
 
     </RelativeLayout>

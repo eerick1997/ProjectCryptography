@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.crypto.artist.digitalportrait.Orders.Principal.ContractsMain;
 import com.crypto.artist.digitalportrait.Orders.Principal.OrdersMain;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -104,6 +105,10 @@ public class DrawerMain extends AppCompatActivity
         } else if (id == R.id.nav_sent && lastId != R.id.nav_sent) {
             getSupportActionBar().setTitle(R.string.title_sent);
             getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new OrdersMain()).commit();
+            lastId = id;
+        }  else if (id == R.id.nav_contract && lastId != R.id.nav_contract) {
+            getSupportActionBar().setTitle(R.string.title_contract);
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new ContractsMain()).commit();
             lastId = id;
         }
 

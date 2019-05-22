@@ -78,33 +78,7 @@ public class OrdersMain extends BottomSheetDialogFragment {
 
         final RecyclerView recyclerOrders = itemView.findViewById(R.id.recycler_orders);
 
-
-
-/*
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(
-                Intent.createChooser(intent, "Seleccione una imagen"),
-                SELECT_FILE);
-*/
-
-
-
-
-
-
-
-
         FirebaseFirestore db= FirebaseFirestore.getInstance();
-
-
-
-
-
-
-
-
 
         CollectionReference datosReference=db.collection("pedidos");
         datosReference.addSnapshotListener(new EventListener<QuerySnapshot>() {

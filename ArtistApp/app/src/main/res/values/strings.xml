@@ -38,4 +38,6 @@
     <string name="saturation">Saturación</string>
     <string name="add_frame">Añadir marco</string>
     <string name="loading">Espere un momento porfavor...</string>
+    <string name="contracts">Contratos pendientes</string>
+    <string name="title_contract">Contratos pendientes</string>
 </resources>

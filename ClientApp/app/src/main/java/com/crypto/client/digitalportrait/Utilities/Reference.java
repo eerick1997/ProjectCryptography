@@ -23,6 +23,7 @@ public class Reference {
     public static final String KEYANDIV = "keyAndIV";
     public static final String PASSWORD = "password";
     public static final String IV = "iv";
+    public static final String CONTRACTS = "contratos";
 
     // Preferences
     public static final String NAME_PREFERENCES = "keys";

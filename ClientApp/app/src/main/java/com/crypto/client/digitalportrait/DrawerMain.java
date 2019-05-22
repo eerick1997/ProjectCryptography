@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.crypto.client.digitalportrait.Orders.Principal.PendingOrder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -114,6 +115,12 @@ public class DrawerMain extends AppCompatActivity
             OrdersMain om = new OrdersMain();
             om.setArguments(bundle);
             getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, om).commit();
+            lastId = id;
+        } else if (id == R.id.nav_pending && lastId != R.id.nav_pending) {
+            getSupportActionBar().setTitle(R.string.title_pending);
+            PendingOrder po = new PendingOrder();
+            po.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, po).commit();
             lastId = id;
         }
 

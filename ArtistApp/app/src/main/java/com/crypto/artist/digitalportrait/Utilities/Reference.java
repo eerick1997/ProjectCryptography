@@ -14,6 +14,9 @@ public class Reference {
     public static final String CLIENTS = "clientes";
     public static final String CLIENTS1 = "cliente1";
 
+    public static final String CONTRACTS = "contratos";
+    public static final String ORDERS = "pedidos";
+
     // Preferences
     public static final String NAME_PREFERENCES = "keys";
 }
