@@ -73,9 +73,19 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
     }
     private void comenzar(int position)
     {
+
+
+
         byte[]plainText=Base64.decode(orders.get(position).getImagen().toString().getBytes());
 
         Crypto crypto=new Crypto(context);
+
+
+
+
+
+
+
 
         byte[] ivUse=Base64.decode(orders.get(position).getIv().toString().getBytes());
         byte[] passUse=Base64.decode(orders.get(position).getPassword().toString().getBytes());
@@ -83,6 +93,16 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
 
         try {
             final byte[] decryptedMessage=crypto.decrypt(plainText,ivAndKey);
+
+            //Verificacion
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decryptedMessage, 0, decryptedMessage.length);
+
+//            Log.i("PBCLIENT",orders.get(position).getPublicKeyClient());
+            byte[]signa=orders.get(position).getSignature().getBytes();
+            byte[] pubK=orders.get(position).getPublicKeyClient().getBytes();
+            boolean verify=crypto.verifySign(decodedByte,pubK,signa);
+            Log.i("VERIFY" , String.valueOf(verify));
+
 
             Intent intent =new Intent(context,PhotoEditorMain.class);
             intent.putExtra("image",decryptedMessage);

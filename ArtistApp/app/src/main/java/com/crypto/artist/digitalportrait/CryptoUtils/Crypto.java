@@ -128,9 +128,9 @@ public class Crypto {
     }
 
     /*, byte[] sign, byte[] pubKey*/
-    public boolean verifySign(Bitmap bitmap) throws Exception{
+    public boolean verifySign(Bitmap bitmap,byte[] publicKeyClient,byte[] signatureClient) throws Exception{
         Security.insertProviderAt(new BouncyCastleProvider(), 1);
-        X509EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(Base64.decodeBase64(new Preferences(context).get("publicKey")));
+        X509EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(Base64.decodeBase64(publicKeyClient));
         KeyFactory keyFactory = KeyFactory.getInstance(ALGORITHM, PROVIDER);
         //Getting public key
         PublicKey publicKey = keyFactory.generatePublic(publicKeySpec);
@@ -147,7 +147,7 @@ public class Crypto {
             signature.update(buffer, 0, length);
         }
         bufferedInputStream.close();
-        return (signature.verify(Base64.decodeBase64(new Preferences(context).get("signature"))));
+        return (signature.verify(Base64.decodeBase64(signatureClient)));
     }
 
     public byte[] getPublicKey() {

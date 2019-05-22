@@ -80,14 +80,14 @@ public class OrdersMain extends BottomSheetDialogFragment {
 
 
 
-
+/*
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(
                 Intent.createChooser(intent, "Seleccione una imagen"),
                 SELECT_FILE);
-
+*/
 
 
 
@@ -117,7 +117,7 @@ public class OrdersMain extends BottomSheetDialogFragment {
                 for(QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots) {
                     Datos datos = documentSnapshot.toObject(Datos.class);
                     datos.setDocumentId(documentSnapshot.getId());
-                    orders.add(new Datos(datos.getDescripcion(),datos.getFecha(),datos.getImagen(),datos.getEmail(),datos.getSin(),datos.getKeyAndIV(),datos.getPassword(),datos.getIv()));
+                    orders.add(new Datos(datos.getDescripcion(),datos.getFecha(),datos.getImagen(),datos.getEmail(),datos.getSin(),datos.getKeyAndIV(),datos.getPassword(),datos.getIv(),datos.getSignature(),datos.getPublicKeyClient()));
                 }
 
                 //Creamos el adaptador

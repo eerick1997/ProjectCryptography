@@ -130,12 +130,20 @@ public class AddOrder extends AppCompatActivity {
             Toast.makeText(AddOrder.this, getString(R.string.fill_description), Toast.LENGTH_LONG).show();
             return;
         }
+
+
+        crypto.signGenerator(originalBitmap);
+
+
         order.put(DESCRIPTION, txtDescription.getText().toString() );
         order.put(EMAIL_O, strEmail);
         order.put(SIN, new String(Base64.encode(byteArray[0])));
         order.put(KEYANDIV, IVAndKey.toString());
         order.put(PASSWORD, new String(Base64.encode(password)));
         order.put(Reference.IV, new String(Base64.encode(IV)));
+        order.put("publicKeyClient",new String((crypto.getPublicKey())));
+        order.put("signature",new String((crypto.getSignature())));
+
 
         FirebaseFirestore DB = FirebaseFirestore.getInstance();
         DB.collection(ORDERS).add(order)

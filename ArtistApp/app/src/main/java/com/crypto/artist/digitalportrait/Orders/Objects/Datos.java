@@ -13,6 +13,8 @@ public class Datos {
     private String estado;
     private String password;
     private String iv;
+    private String signature;
+    private String publicKeyClient;
     public Datos(){
 
     }
@@ -23,7 +25,7 @@ public class Datos {
     public void setDocumentId(String documentId){
         this.documentId=documentId;
     }
-    public Datos(String descripcion,String fecha,String imagen,String email,String sin,String keyAndIV,String password,String iv){
+    public Datos(String descripcion,String fecha,String imagen,String email,String sin,String keyAndIV,String password,String iv,String signature,String publicKeyClient){
         this.descripcion=descripcion;
         this.fecha=fecha;
         this.imagen=imagen;
@@ -32,6 +34,8 @@ public class Datos {
         this.keyAndIV=keyAndIV;
         this.password=password;
         this.iv=iv;
+        this.signature=signature;
+        this.publicKeyClient=publicKeyClient;
     }
 
 
@@ -105,5 +109,21 @@ public class Datos {
 
     public void setIv(String iv) {
         this.iv = iv;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
+    }
+
+    public String getPublicKeyClient() {
+        return publicKeyClient;
+    }
+
+    public void setPublicKeyClient(String publicKeyClient) {
+        this.publicKeyClient = publicKeyClient;
     }
 }
