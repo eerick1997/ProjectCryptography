@@ -132,7 +132,13 @@ public class AddOrder extends AppCompatActivity {
         }
 
 
-        crypto.signGenerator(originalBitmap);
+
+
+        final byte[]decryptedMessage=crypto.decrypt(cipherMessage,IVAndKey);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decryptedMessage, 0, decryptedMessage.length);
+
+
+        crypto.signGenerator(decodedByte);
 
 
         order.put(DESCRIPTION, txtDescription.getText().toString() );
@@ -144,6 +150,10 @@ public class AddOrder extends AppCompatActivity {
         order.put("publicKeyClient",new String((crypto.getPublicKey())));
         order.put("signature",new String((crypto.getSignature())));
 
+
+        Log.i("SIG",new String(crypto.getSignature()));
+        boolean verify=crypto.verifySign(decodedByte,new String(crypto.getPublicKey()).getBytes(),new String(crypto.getSignature()).getBytes());
+        Log.i("VERIFY--", String.valueOf(verify));
 
         FirebaseFirestore DB = FirebaseFirestore.getInstance();
         DB.collection(ORDERS).add(order)

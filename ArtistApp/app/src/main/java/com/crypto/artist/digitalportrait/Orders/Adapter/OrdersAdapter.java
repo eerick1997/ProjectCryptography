@@ -21,6 +21,7 @@ import com.crypto.artist.digitalportrait.Orders.Objects.Datos;
 import com.crypto.artist.digitalportrait.Orders.Objects.Order;
 import com.crypto.artist.digitalportrait.PhotoEditor.Principal.PhotoEditorMain;
 import com.crypto.artist.digitalportrait.R;
+import com.crypto.artist.digitalportrait.Utilities.Preferences;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -95,15 +96,23 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
             final byte[] decryptedMessage=crypto.decrypt(plainText,ivAndKey);
 
             //Verificacion
+
+
             Bitmap decodedByte = BitmapFactory.decodeByteArray(decryptedMessage, 0, decryptedMessage.length);
 
 //            Log.i("PBCLIENT",orders.get(position).getPublicKeyClient());
             byte[]signa=orders.get(position).getSignature().getBytes();
             byte[] pubK=orders.get(position).getPublicKeyClient().getBytes();
+
+            Log.i("SIG",new String(signa));
+            Log.i("PUBK",new String(pubK));
+
             boolean verify=crypto.verifySign(decodedByte,pubK,signa);
             Log.i("VERIFY" , String.valueOf(verify));
-
-
+            if(verify)
+                Toast.makeText(context,"Firma válida",Toast.LENGTH_LONG).show();
+            else
+                Toast.makeText(context,"Firma NO válida",Toast.LENGTH_LONG).show();
             Intent intent =new Intent(context,PhotoEditorMain.class);
             intent.putExtra("image",decryptedMessage);
             context.startActivity(intent);
