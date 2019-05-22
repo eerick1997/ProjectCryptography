@@ -1,6 +1,7 @@
 package com.crypto.client.digitalportrait.Orders.Principal;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -67,8 +68,7 @@ public class AddOrder extends AppCompatActivity {
     private static final String ALGORITHM = "AES";
     private static final int KEY_SIZE = 256;
     private static final int IV_SIZE = 128;
-
-
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,17 +101,17 @@ public class AddOrder extends AppCompatActivity {
     }
 
     private void sendOrder() throws Exception{
+        show();
+        EditText ePass = findViewById(R.id.ePass);
+        EditText eIV = findViewById(R.id.eIV);
 
-        EditText ePass=findViewById(R.id.ePass);
-        EditText eIV=findViewById(R.id.eIV);
-
-        Crypto crypto = new Crypto(AddOrder.this);
+        final Crypto crypto = new Crypto(AddOrder.this);
 
         KeyGenerator keyGenerator = KeyGenerator.getInstance(ALGORITHM);
         keyGenerator.init(KEY_SIZE);
-        byte[] passAux=Base64.decode(ePass.getText().toString().getBytes());
+        byte[] passAux = Base64.decode(ePass.getText().toString().getBytes());
         KeyGenerator IVGenerator = KeyGenerator.getInstance(ALGORITHM);
-        byte[] ivAux=Base64.decode(eIV.getText().toString().getBytes());
+        final byte[] ivAux = Base64.decode(eIV.getText().toString().getBytes());
         IVGenerator.init(IV_SIZE);
 
         final byte[][] byteArray = {null};
@@ -170,6 +170,9 @@ public class AddOrder extends AppCompatActivity {
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
                         Toast.makeText(getApplicationContext(), getString(R.string.order_sent_successfully), Toast.LENGTH_LONG).show();
+                        hide();
+                        //IV?
+                        sendKeyByEmail(crypto.getPrivateKey(), ivAux);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -177,6 +180,7 @@ public class AddOrder extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                         Log.w(TAG, "Error adding document", e);
                         Toast.makeText(getApplicationContext(), getString(R.string.order_not_sent_successfully), Toast.LENGTH_LONG).show();
+                        hide();
                     }
                 });
 
@@ -214,6 +218,37 @@ public class AddOrder extends AppCompatActivity {
                 this.originalBitmap = bitmap;
                 photoEditorView.getSource().setImageBitmap(this.originalBitmap);
             }
+        }
+    }
+
+    private void sendKeyByEmail(byte[] privateKey, byte[] IV){
+        Log.d(TAG, "sendKeyByEmail() called with: privateKey = [" + privateKey + "]");
+
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("message/rfc822");
+        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{strEmail, "vargas.erick030997@gmail.com", "albertoesquivel.97@gmail.com"});
+        i.putExtra(Intent.EXTRA_SUBJECT, "Tu llave privada");
+        i.putExtra(Intent.EXTRA_TEXT   , new String(Base64.encode(privateKey)) + " \n\nvector de inicialización\n\n" + new String(Base64.encode(IV)));
+        try {
+            startActivity(Intent.createChooser(i, getString(R.string.title_email)));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(AddOrder.this, getString(R.string.not_services_found), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void show(){
+        if (progressDialog == null){
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage(getString(R.string.loading));
+            progressDialog.setIndeterminate(true);
+        }
+
+        progressDialog.show();
+    }
+
+    public void hide(){
+        if (progressDialog != null && progressDialog.isShowing()){
+            progressDialog.dismiss();
         }
     }
 }

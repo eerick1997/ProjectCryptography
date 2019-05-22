@@ -10,13 +10,8 @@
             android:title="@string/menu_ordered" />
 
         <item
-            android:id="@+id/nav_pending"
-            android:icon="@drawable/ic_access_time_black_24dp"
+            android:id="@+id/nav_finished"
+            android:icon="@drawable/ic_done_all_black_24dp"
             android:title="@string/menu_pending" />
-
-        <item
-            android:id="@+id/nav_sent"
-            android:icon="@drawable/ic_menu_send"
-            android:title="@string/menu_sent" />
     </group>
 </menu>

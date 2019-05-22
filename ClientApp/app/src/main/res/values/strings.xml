@@ -51,4 +51,5 @@
     <string name="contract_not_sent_successfully">Ha ocurrido un error, inténtalo más tarde.</string>
     <string name="not_services_found">No hay servicios de correo electrónico deisponibles.</string>
     <string name="title_email">Enviar correo</string>
+    <string name="btn_show_result">Resultado</string>
 </resources>
