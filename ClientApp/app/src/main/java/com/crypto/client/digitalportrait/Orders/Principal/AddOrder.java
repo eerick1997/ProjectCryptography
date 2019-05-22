@@ -61,7 +61,6 @@ public class AddOrder extends AppCompatActivity {
 
     private static final String TAG = "AddOrder";
     private PhotoEditorView photoEditorView;
-    private Uri imageSelectedUri;
     private Bitmap originalBitmap;
     private String strEmail;
     private static final String ALGORITHM = "AES";
@@ -155,6 +154,7 @@ public class AddOrder extends AppCompatActivity {
                     }
                 });
 
+        finish();
 
     }
 
@@ -185,9 +185,6 @@ public class AddOrder extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
             if (requestCode == PERMISSION_PICK_IMAGE) {
                 Bitmap bitmap = BitmapUtils.getBitmapFromGallery(this, data.getData(), 800, 800);
-
-                this.imageSelectedUri = data.getData();
-
                 this.originalBitmap = bitmap;
                 photoEditorView.getSource().setImageBitmap(this.originalBitmap);
             }
