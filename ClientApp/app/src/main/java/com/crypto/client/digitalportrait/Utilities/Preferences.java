@@ -19,7 +19,7 @@ public class Preferences {
     }
 
 
-    private String bytesToString(byte[] bytes){
+    public String bytesToString(byte[] bytes){
         if (bytes == null){
             return null;
         }
@@ -85,6 +85,16 @@ public class Preferences {
             sharedPreferences = context.getSharedPreferences(NAME_PREFERENCES, Context.MODE_PRIVATE);
             String str = sharedPreferences.getString(key, null);
             return stringToBytes(str);
+        } catch (Exception e){
+            Log.e(TAG, "get: ", e);
+        }
+        return null;
+    }
+
+    public String getStr(@NonNull String key){
+        try {
+            sharedPreferences = context.getSharedPreferences(NAME_PREFERENCES, Context.MODE_PRIVATE);
+            return sharedPreferences.getString(key, null);
         } catch (Exception e){
             Log.e(TAG, "get: ", e);
         }

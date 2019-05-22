@@ -23,6 +23,7 @@ import com.crypto.client.digitalportrait.Orders.Objects.Contract;
 import com.crypto.client.digitalportrait.Orders.Objects.Datos;
 import com.crypto.client.digitalportrait.Orders.Objects.Order;
 import com.crypto.client.digitalportrait.R;
+import com.crypto.client.digitalportrait.Utilities.Preferences;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -38,6 +39,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -49,7 +52,7 @@ public class OrdersMain extends BottomSheetDialogFragment {
 
     private static final String TAG = "OrdersMain";
     private String strEmail;
-    private static final String ALGORITHM = "DH";
+
     @SuppressLint("WrongConstant")
     @Nullable
     @Override
@@ -87,9 +90,9 @@ public class OrdersMain extends BottomSheetDialogFragment {
                 FABAddOrder.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        /*Intent inte = new Intent(getContext(), AddOrder.class);
+                        Intent inte = new Intent(getContext(), AddOrder.class);
                         inte.putExtra(EMAIL, strEmail);
-                        startActivity(inte);*/
+                        startActivity(inte);
 
                     }
                 });
@@ -129,16 +132,6 @@ public class OrdersMain extends BottomSheetDialogFragment {
                         Toast.makeText(getContext(), getString(R.string.contract_not_sent_successfully), Toast.LENGTH_LONG).show();
                     }
                 });
-    }
-
-    private byte[] generatePublicKey() throws NoSuchAlgorithmException {
-        Log.i(TAG, "generatePublicKey: generating public key");
-        byte[] publicKey;
-        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(ALGORITHM);
-        keyPairGenerator.initialize(2048);
-        KeyPair keyPair = keyPairGenerator.generateKeyPair();
-
-        return null;
     }
 
 }

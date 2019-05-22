@@ -65,42 +65,26 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
     }
 
     @Override
-    public void onBindViewHolder(@NonNull OrderViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final OrderViewHolder holder, final int position) {
         holder.txtDate.setText(orders.get(position).getFecha());
         holder.txtStatus.setText(orders.get(position).getDescripcion());
 
-/*        if(orders.get(position).getDescripcion().equals("Prueba de correo"))
-        {
+        holder.btnOrderAction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        }
-
-
-
-
-  */
-        final byte[] passAux;
-        final byte[] ivAux;
-        KeyGenerator keyGenerator = null;
-        try {
-            keyGenerator = KeyGenerator.getInstance(ALGORITHM);
-            keyGenerator.init(KEY_SIZE);
-            passAux=Base64.decode(holder.ePass.getText().toString().getBytes());
-            final KeyGenerator IVGenerator = KeyGenerator.getInstance(ALGORITHM);
-            ivAux=Base64.decode(holder.eIV.getText().toString().getBytes());
-            holder.btnOrderAction.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    comenzar(position,passAux,ivAux,IVGenerator);
+                try {
+                    KeyGenerator keyGenerator = KeyGenerator.getInstance(ALGORITHM);
+                    keyGenerator.init(KEY_SIZE);
+                    final byte[] passAux = Base64.decode(holder.ePass.getText().toString().getBytes());
+                    final KeyGenerator IVGenerator = KeyGenerator.getInstance(ALGORITHM);
+                    final byte[] ivAux = Base64.decode(holder.eIV.getText().toString().getBytes());
+                    comenzar(position, passAux, ivAux, IVGenerator);
+                } catch (NoSuchAlgorithmException e) {
+                    Log.e(TAG, "onClick: ", e);
                 }
-            });
-
-
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-
-
+            }
+        });
 
 
 
