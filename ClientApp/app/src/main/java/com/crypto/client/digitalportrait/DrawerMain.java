@@ -4,9 +4,6 @@ import android.os.Bundle;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.crypto.client.digitalportrait.Orders.Principal.PendingOrder;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import android.util.Log;
 import android.view.View;
@@ -16,16 +13,15 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 
 import android.view.MenuItem;
 
+import com.crypto.client.digitalportrait.Orders.Principal.CompletedOrder;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.FragmentManager;
 
 import android.view.Menu;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -112,9 +108,9 @@ public class DrawerMain extends AppCompatActivity
             lastId = id;
         } else if (id == R.id.nav_finished && lastId != R.id.nav_finished) {
             getSupportActionBar().setTitle(R.string.title_sent);
-            OrdersMain om = new OrdersMain();
-            om.setArguments(bundle);
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, om).commit();
+            CompletedOrder co = new CompletedOrder();
+            co.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, co).commit();
             lastId = id;
         }
 

@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.crypto.client.digitalportrait.Orders.Adapter.OrderCompleted;
-import com.crypto.client.digitalportrait.Orders.Objects.Contract;
+import com.crypto.client.digitalportrait.Orders.Objects.Datos;
 import com.crypto.client.digitalportrait.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.firebase.firestore.CollectionReference;
@@ -29,7 +29,7 @@ import java.util.List;
 
 import static com.crypto.client.digitalportrait.Utilities.Reference.*;
 
-public class PendingOrder extends BottomSheetDialogFragment {
+public class CompletedOrder extends BottomSheetDialogFragment {
 
     private static final String TAG = "OrdersMain";
     private String strEmail;
@@ -37,34 +37,34 @@ public class PendingOrder extends BottomSheetDialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View itemView = inflater.inflate(R.layout.activity_pending_orders_main, container, false);
-        final List<Contract> contracts = new ArrayList<>();
-        final RecyclerView recyclerPending = itemView.findViewById(R.id.recycler_pending_orders);
+        final View itemView = inflater.inflate(R.layout.activity_completed_orders_main, container, false);
+        final List<Datos> datos = new ArrayList<>();
+        final RecyclerView recyclerCompleted = itemView.findViewById(R.id.recycler_completed_orders);
 
         strEmail = this.getArguments().getString(EMAIL, getString(R.string.nav_header_subtitle));
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        CollectionReference datosReference = db.collection(CONTRACTS);
+        CollectionReference datosReference = db.collection(ORDERS);
         datosReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                contracts.clear();
+                datos.clear();
                 if(e!=null)
                     return;
 
                 for(QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots) {
-                    Contract contract = documentSnapshot.toObject(Contract.class);
-                    contract.setDocumentId(documentSnapshot.getId());
-                    contracts.add(new Contract(contract.getPublicKey(), null, contract.getEmail(), contract.getDate()));
+                    Datos data = documentSnapshot.toObject(Datos.class);
+                    data.setDocumentId(documentSnapshot.getId());
+                    datos.add(new Datos(data.getDescripcion(), data.getFecha(), data.getImagen(), data.getEmail()));
                 }
 
                 //Creamos el adaptador
-                OrderCompleted orderCompleted = new OrderCompleted(getContext(), contracts);
+                OrderCompleted orderCompleted = new OrderCompleted(getContext(), datos);
                 //Colocamos el adaptador
-                recyclerPending.setHasFixedSize(true);
-                recyclerPending.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-                recyclerPending.setAdapter(orderCompleted);
+                recyclerCompleted.setHasFixedSize(true);
+                recyclerCompleted.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+                recyclerCompleted.setAdapter(orderCompleted);
 
             }
         });
