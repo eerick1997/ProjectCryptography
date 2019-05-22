@@ -1,10 +1,10 @@
-package com.crypto.artist.digitalportrait.Utilities;
+package com.crypto.client.digitalportrait.Utilities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import static com.crypto.artist.digitalportrait.Utilities.Reference.NAME_PREFERENCES;
+import static com.crypto.client.digitalportrait.Utilities.Reference.NAME_PREFERENCES;
 
 import androidx.annotation.NonNull;
 

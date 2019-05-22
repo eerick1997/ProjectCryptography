@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.util.Log;
 
-import com.crypto.artist.digitalportrait.Utilities.Preferences;
+import com.crypto.client.digitalportrait.Utilities.Preferences;
 
 import org.apache.commons.codec.binary.Base64;
 import org.spongycastle.crypto.CipherParameters;

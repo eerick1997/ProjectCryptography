@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.crypto.client.digitalportrait">
+    <!-- Here we go to write our permissions -->
+    <dist:module dist:instant="true" />
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="false" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,8 +24,9 @@
             android:name=".Orders.Principal.AddOrder"
             android:label="@string/title_activity_add_order"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
         <activity
-            android:name=".DrawerMain"
+            android:name=".Login.Login"
             android:theme="@style/AppTheme.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,8 +34,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".Login.Login"
+            android:name=".DrawerMain"
             android:label="@string/title_activity_drawer_main"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

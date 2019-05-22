@@ -27,9 +27,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-import static com.crypto.artist.digitalportrait.Utilities.Reference.EMAIL;
-import static com.crypto.artist.digitalportrait.Utilities.Reference.IMG_PROFILE;
-import static com.crypto.artist.digitalportrait.Utilities.Reference.USER_NAME;
+import static com.crypto.client.digitalportrait.Utilities.Reference.*;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 

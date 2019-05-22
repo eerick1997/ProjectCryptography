@@ -7,6 +7,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.core.view.GravityCompat;
@@ -29,10 +30,7 @@ import android.widget.TextView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import com.crypto.client.digitalportrait.Orders.Principal.OrdersMain;
 
-import static com.crypto.artist.digitalportrait.Utilities.Reference.EMAIL;
-import static com.crypto.artist.digitalportrait.Utilities.Reference.IMG_PROFILE;
-import static com.crypto.artist.digitalportrait.Utilities.Reference.USER_NAME;
-
+import static com.crypto.client.digitalportrait.Utilities.Reference.*;
 public class DrawerMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -40,6 +38,7 @@ public class DrawerMain extends AppCompatActivity
 
     private int lastId = R.id.nav_ordered;
     private static Toolbar toolbar;
+    private String strEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +61,8 @@ public class DrawerMain extends AppCompatActivity
         TextView userName = view.findViewById(R.id.txt_user_name);
         userName.setText(getIntent().getStringExtra(USER_NAME));
         TextView email = view.findViewById(R.id.txt_email);
-        email.setText(getIntent().getStringExtra(EMAIL));
+        strEmail = getIntent().getStringExtra(EMAIL);
+        email.setText(strEmail);
         CircleImageView userProfileImage = view.findViewById(R.id.img_user_profile_image);
         Glide.with(DrawerMain.this)
                 .load(getIntent().getStringExtra(IMG_PROFILE))
@@ -72,8 +72,12 @@ public class DrawerMain extends AppCompatActivity
                 .centerCrop()
                 .into(userProfileImage);
 
+        Bundle bundle = new Bundle();
+        bundle.putString(EMAIL, strEmail);
+        OrdersMain om = new OrdersMain();
+        om.setArguments(bundle);
         getSupportActionBar().setTitle(R.string.title_orders);
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new OrdersMain()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, om).commit();
     }
 
     @Override
@@ -94,16 +98,22 @@ public class DrawerMain extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-
+        Bundle bundle = new Bundle();
+        bundle.putString(EMAIL, strEmail);
+        Log.i(TAG, "onNavigationItemSelected: " + strEmail);
         int id = item.getItemId();
 
         if (id == R.id.nav_ordered && lastId != R.id.nav_ordered) {
             getSupportActionBar().setTitle(R.string.title_orders);
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new OrdersMain()).commit();
+            OrdersMain om = new OrdersMain();
+            om.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, om).commit();
             lastId = id;
         } else if (id == R.id.nav_sent && lastId != R.id.nav_sent) {
             getSupportActionBar().setTitle(R.string.title_sent);
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new OrdersMain()).commit();
+            OrdersMain om = new OrdersMain();
+            om.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, om).commit();
             lastId = id;
         }
 

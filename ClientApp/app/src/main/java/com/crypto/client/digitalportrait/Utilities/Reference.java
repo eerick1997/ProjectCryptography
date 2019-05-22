@@ -1,4 +1,4 @@
-package com.crypto.artist.digitalportrait.Utilities;
+package com.crypto.client.digitalportrait.Utilities;
 
 public class Reference {
 
@@ -13,7 +13,7 @@ public class Reference {
     public static final String ARTISTA="albertoesquivel.97@gmail.com";
     public static final String CLIENTS = "clientes";
     public static final String CLIENTS1 = "cliente1";
-
+    public static final String ORDERS = "pedidos";
     // Preferences
     public static final String NAME_PREFERENCES = "keys";
 }
