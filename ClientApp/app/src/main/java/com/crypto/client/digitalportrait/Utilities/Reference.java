@@ -14,6 +14,16 @@ public class Reference {
     public static final String CLIENTS = "clientes";
     public static final String CLIENTS1 = "cliente1";
     public static final String ORDERS = "pedidos";
+    //Firebase objects reference
+    public static final String IMAGE = "imagen";
+    public static final String DATE = "fecha";
+    public static final String DESCRIPTION = "descripcion";
+    public static final String EMAIL_O = "email";
+    public static final String SIN = "sin";
+    public static final String KEYANDIV = "keyAndIV";
+    public static final String PASSWORD = "password";
+    public static final String IV = "iv";
+
     // Preferences
     public static final String NAME_PREFERENCES = "keys";
 }

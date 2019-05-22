@@ -42,4 +42,7 @@
     <string name="txt_description">Descripción</string>
     <string name="hint_description">Escribe la descripción de tu pedido aquí</string>
     <string name="btn_choose">Elegir imagen</string>
+    <string name="fill_description">Se requiere de la descripción</string>
+    <string name="order_sent_successfully">El pedido se ha realizado exitosamente</string>
+    <string name="order_not_sent_successfully">Ha ocurrido un error al solicitar el pedido, intentalo más tarde</string>
 </resources>
