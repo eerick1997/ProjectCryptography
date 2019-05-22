@@ -75,7 +75,7 @@ public class PendingOrder extends BottomSheetDialogFragment {
                 for(QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots) {
                     Contract contract = documentSnapshot.toObject(Contract.class);
                     contract.setDocumentId(documentSnapshot.getId());
-                    contracts.add(new Contract(contract.getPublicKey(), contract.getEmail(), contract.getDate()));
+                    contracts.add(new Contract(contract.getPublicKey(), null, contract.getEmail(), contract.getDate()));
                 }
 
                 //Creamos el adaptador

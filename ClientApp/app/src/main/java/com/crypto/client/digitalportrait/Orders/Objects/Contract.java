@@ -4,26 +4,18 @@ import com.google.firebase.firestore.Exclude;
 
 public class Contract {
 
-    private byte[] publicKey;
+    private byte[] publicKey, publicKeyArtist;
     private String email;
     private String date;
     private String documentId;
 
     public Contract(){}
 
-    public Contract(byte[] publicKey, String email, String date) {
+    public Contract(byte[] publicKey, byte[] publicKeyArtist, String email, String date) {
         this.publicKey = publicKey;
+        this.publicKeyArtist = publicKeyArtist;
         this.email = email;
         this.date = date;
-    }
-
-    @Exclude
-    public String getDocumentId(){
-        return documentId;
-    }
-
-    public void setDocumentId(String documentId){
-        this.documentId = documentId;
     }
 
     public byte[] getPublicKey() {
@@ -32,6 +24,14 @@ public class Contract {
 
     public void setPublicKey(byte[] publicKey) {
         this.publicKey = publicKey;
+    }
+
+    public byte[] getPublicKeyArtist() {
+        return publicKeyArtist;
+    }
+
+    public void setPublicKeyArtist(byte[] publicKeyArtist) {
+        this.publicKeyArtist = publicKeyArtist;
     }
 
     public String getEmail() {
@@ -49,4 +49,14 @@ public class Contract {
     public void setDate(String date) {
         this.date = date;
     }
+
+    @Exclude
+    public String getDocumentId(){
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId){
+        this.documentId = documentId;
+    }
+
 }

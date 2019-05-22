@@ -9,18 +9,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.crypto.client.digitalportrait.CryptoUtils.Crypto;
 import com.crypto.client.digitalportrait.Orders.Adapter.OrdersAdapter;
+import com.crypto.client.digitalportrait.Orders.Objects.Contract;
 import com.crypto.client.digitalportrait.Orders.Objects.Datos;
 import com.crypto.client.digitalportrait.Orders.Objects.Order;
 import com.crypto.client.digitalportrait.R;
@@ -36,13 +35,13 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.crypto.client.digitalportrait.Utilities.Reference.*;
 
@@ -50,6 +49,7 @@ public class OrdersMain extends BottomSheetDialogFragment {
 
     private static final String TAG = "OrdersMain";
     private String strEmail;
+    private static final String ALGORITHM = "DH";
     @SuppressLint("WrongConstant")
     @Nullable
     @Override
@@ -87,15 +87,58 @@ public class OrdersMain extends BottomSheetDialogFragment {
                 FABAddOrder.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent inte = new Intent(getContext(), AddOrder.class);
+                        /*Intent inte = new Intent(getContext(), AddOrder.class);
                         inte.putExtra(EMAIL, strEmail);
-                        startActivity(inte);
+                        startActivity(inte);*/
+
                     }
                 });
             }
         });
 
         return  itemView;
+    }
+
+
+    public void makeOrder(String email){
+        Log.d(TAG, "makeOrder() called with: email = [" + email + "]");
+
+        Map<String, Object> contract = new HashMap<>();
+        byte[] publickey = null;
+        byte[] publickeyArtist = null;
+        String date = null;
+
+        contract.put(PUBLICKEY, publickey);
+        contract.put(PUBLICKEYA, publickeyArtist);
+        contract.put(EMAIL, strEmail);
+        contract.put(DATE, date);
+
+        FirebaseFirestore DB = FirebaseFirestore.getInstance();
+        DB.collection(CONTRACTS).add(contract)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+                        Toast.makeText(getContext(), getString(R.string.contract_sent_successfully), Toast.LENGTH_LONG).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding document", e);
+                        Toast.makeText(getContext(), getString(R.string.contract_not_sent_successfully), Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
+
+    private byte[] generatePublicKey() throws NoSuchAlgorithmException {
+        Log.i(TAG, "generatePublicKey: generating public key");
+        byte[] publicKey;
+        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(ALGORITHM);
+        keyPairGenerator.initialize(2048);
+        KeyPair keyPair = keyPairGenerator.generateKeyPair();
+
+        return null;
     }
 
 }

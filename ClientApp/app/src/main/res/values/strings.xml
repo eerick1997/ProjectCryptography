@@ -47,4 +47,6 @@
     <string name="order_not_sent_successfully">Ha ocurrido un error al solicitar el pedido, intentalo más tarde</string>
     <string name="menu_pending">Pendientes</string>
     <string name="title_pending">Pendientes</string>
+    <string name="contract_sent_successfully">Se le notificará al artista de tu pedido</string>
+    <string name="contract_not_sent_successfully">Ha ocurrido un error, inténtalo más tarde.</string>
 </resources>

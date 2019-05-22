@@ -186,7 +186,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
             super(itemView);
             txtDate = itemView.findViewById(R.id.txt_date);
             txtStatus = itemView.findViewById(R.id.txt_status);
-            btnOrderAction = itemView.findViewById(R.id.btn_order_action);
+            btnOrderAction = itemView.findViewById(R.id.btn_order_edit);
 /*
             btnOrderAction.setOnClickListener(new View.OnClickListener() {
                 @Override
