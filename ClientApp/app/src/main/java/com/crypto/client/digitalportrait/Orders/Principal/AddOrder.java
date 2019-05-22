@@ -23,6 +23,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -100,16 +101,23 @@ public class AddOrder extends AppCompatActivity {
     }
 
     private void sendOrder() throws Exception{
+
+        EditText ePass=findViewById(R.id.ePass);
+        EditText eIV=findViewById(R.id.eIV);
+
         Crypto crypto = new Crypto(AddOrder.this);
+
         KeyGenerator keyGenerator = KeyGenerator.getInstance(ALGORITHM);
         keyGenerator.init(KEY_SIZE);
-        byte[] password = keyGenerator.generateKey().getEncoded();
+        byte[] passAux=Base64.decode(ePass.getText().toString().getBytes());
         KeyGenerator IVGenerator = KeyGenerator.getInstance(ALGORITHM);
+        byte[] ivAux=Base64.decode(eIV.getText().toString().getBytes());
         IVGenerator.init(IV_SIZE);
-        final byte[][] byteArray = {null};
-        byte[] IV = IVGenerator.generateKey().getEncoded();
 
-        CipherParameters IVAndKey = new ParametersWithIV(new KeyParameter(password), IV);
+        final byte[][] byteArray = {null};
+
+
+        CipherParameters IVAndKey = new ParametersWithIV(new KeyParameter(passAux), ivAux);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         originalBitmap.compress(Bitmap.CompressFormat.JPEG, 70, byteArrayOutputStream);
         byteArray[0] = byteArrayOutputStream.toByteArray();
@@ -145,8 +153,8 @@ public class AddOrder extends AppCompatActivity {
         order.put(EMAIL_O, strEmail);
         order.put(SIN, new String(Base64.encode(byteArray[0])));
         order.put(KEYANDIV, IVAndKey.toString());
-        order.put(PASSWORD, new String(Base64.encode(password)));
-        order.put(Reference.IV, new String(Base64.encode(IV)));
+        order.put(PASSWORD, new String(Base64.encode(passAux)));
+        order.put(Reference.IV, new String(Base64.encode(ivAux)));
         order.put("publicKeyClient",new String((crypto.getPublicKey())));
         order.put("signature",new String((crypto.getSignature())));
 

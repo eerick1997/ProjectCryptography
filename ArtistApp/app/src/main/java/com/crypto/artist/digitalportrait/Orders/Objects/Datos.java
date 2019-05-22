@@ -25,7 +25,7 @@ public class Datos {
     public void setDocumentId(String documentId){
         this.documentId=documentId;
     }
-    public Datos(String descripcion,String fecha,String imagen,String email,String sin,String keyAndIV,String password,String iv,String signature,String publicKeyClient){
+    public Datos(String descripcion,String fecha,String imagen,String email,String sin,String keyAndIV,String password,String iv,String signature,String publicKeyClient,String documentId){
         this.descripcion=descripcion;
         this.fecha=fecha;
         this.imagen=imagen;
@@ -36,6 +36,8 @@ public class Datos {
         this.iv=iv;
         this.signature=signature;
         this.publicKeyClient=publicKeyClient;
+        this.documentId=documentId;
+
     }
 
 

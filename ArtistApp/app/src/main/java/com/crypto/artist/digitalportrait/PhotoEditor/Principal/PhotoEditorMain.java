@@ -24,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.crypto.artist.digitalportrait.CryptoUtils.Crypto;
 import com.crypto.artist.digitalportrait.PhotoEditor.Adapter.ViewPagerAdapter;
 import com.crypto.artist.digitalportrait.PhotoEditor.Interface.AddFrameListener;
 import com.crypto.artist.digitalportrait.PhotoEditor.Interface.AddTextFragmentListener;
@@ -34,6 +35,8 @@ import com.crypto.artist.digitalportrait.PhotoEditor.Interface.FilterListFragmen
 import com.crypto.artist.digitalportrait.PhotoEditor.Utils.BitmapUtils;
 import com.crypto.artist.digitalportrait.R;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -45,15 +48,27 @@ import com.zomato.photofilters.imageprocessors.subfilters.BrightnessSubFilter;
 import com.zomato.photofilters.imageprocessors.subfilters.ContrastSubFilter;
 import com.zomato.photofilters.imageprocessors.subfilters.SaturationSubfilter;
 
+import org.spongycastle.crypto.CipherParameters;
+import org.spongycastle.crypto.params.KeyParameter;
+import org.spongycastle.crypto.params.ParametersWithIV;
 import org.spongycastle.util.encoders.Base64;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
+
+import javax.crypto.KeyGenerator;
 
 import ja.burhanrashid52.photoeditor.OnSaveBitmap;
 import ja.burhanrashid52.photoeditor.PhotoEditor;
 import ja.burhanrashid52.photoeditor.PhotoEditorView;
+
+import static com.crypto.artist.digitalportrait.Utilities.Reference.DATE;
+import static com.crypto.artist.digitalportrait.Utilities.Reference.IMAGE;
 
 public class PhotoEditorMain extends AppCompatActivity implements FilterListFragmentListener,
         EditImageFragmentListener, BrushFragmentListener, EmojiFragmentListener,
@@ -63,6 +78,16 @@ public class PhotoEditorMain extends AppCompatActivity implements FilterListFrag
     public static final int PERMISSION_PICK_IMAGE = 1000;
     public static final int PERMISSION_INSERT_IMAGE = 1001;
     public static final int CAMERA_REQUEST = 1002;
+
+
+
+    private static final String TAG = "AddOrder";
+
+
+    private String strEmail;
+    private static final String ALGORITHM = "AES";
+    private static final int KEY_SIZE = 256;
+    private static final int IV_SIZE = 128;
 
     PhotoEditorView photoEditorView;
     PhotoEditor photoEditor;
@@ -368,7 +393,67 @@ public class PhotoEditorMain extends AppCompatActivity implements FilterListFrag
     }
 
     private void saveImageToGallery(){
-        Dexter.withActivity(this)
+
+        final FirebaseFirestore db=FirebaseFirestore.getInstance();
+        photoEditor.saveAsBitmap(new OnSaveBitmap() {
+            @Override
+            public void onBitmapReady(Bitmap saveBitmap) {
+                Crypto crypto = new Crypto(PhotoEditorMain.this);
+                KeyGenerator keyGenerator = null;
+                try {
+                    keyGenerator = KeyGenerator.getInstance(ALGORITHM);
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                }
+                keyGenerator.init(KEY_SIZE);
+                byte[] password = keyGenerator.generateKey().getEncoded();
+                KeyGenerator IVGenerator = null;
+                try {
+                    IVGenerator = KeyGenerator.getInstance(ALGORITHM);
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                }
+                IVGenerator.init(IV_SIZE);
+                final byte[][] byteArray = {null};
+                byte[] IV = IVGenerator.generateKey().getEncoded();
+
+                CipherParameters IVAndKey = new ParametersWithIV(new KeyParameter(password), IV);
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                saveBitmap.compress(Bitmap.CompressFormat.JPEG, 70, byteArrayOutputStream);
+                byteArray[0] = byteArrayOutputStream.toByteArray();
+
+
+                //Bitmap comppressedBitmap = BitmapFactory.decodeByteArray(byteArray[0], 0, byteArray[0].length);
+                try {
+                    byte[] cipherMessage = crypto.encrypt(byteArray[0], IVAndKey);
+                    Map<String, Object> order = new HashMap<>();
+                    order.put("imageArtist", new String(Base64.encode(cipherMessage)));
+
+                    final byte[]decryptedMessage=crypto.decrypt(cipherMessage,IVAndKey);
+                    Bitmap decodedByte = BitmapFactory.decodeByteArray(decryptedMessage, 0, decryptedMessage.length);
+
+
+                    crypto.signGenerator(decodedByte);
+                    order.put("publicKeyArtist",new String((crypto.getPublicKey())));
+                    order.put("signatureArtist",new String((crypto.getSignature())));
+                    Log.i("DOCUMENT",getIntent().getExtras().getString("documentName"));
+
+                    db.collection("pedidos").document(getIntent().getExtras().getString("documentName"))
+                            .set(order, SetOptions.merge());
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+
+            }
+        });
+       /* Dexter.withActivity(this)
                 .withPermissions(Manifest.permission.READ_EXTERNAL_STORAGE,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 .withListener(new MultiplePermissionsListener() {
@@ -415,7 +500,7 @@ public class PhotoEditorMain extends AppCompatActivity implements FilterListFrag
                     public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
                         token.continuePermissionRequest();
                     }
-                }).check();
+                }).check();*/
     }
 
     private void openImage(String path){

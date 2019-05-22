@@ -16,7 +16,9 @@ public class Reference {
 
     public static final String CONTRACTS = "contratos";
     public static final String ORDERS = "pedidos";
-
+    //Datos para cifrar
+    public static final String IMAGE = "imagen";
+    public static final String DATE = "fecha";
     // Preferences
     public static final String NAME_PREFERENCES = "keys";
 }

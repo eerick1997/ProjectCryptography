@@ -91,7 +91,8 @@ public class OrdersMain extends BottomSheetDialogFragment {
                 for(QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots) {
                     Datos datos = documentSnapshot.toObject(Datos.class);
                     datos.setDocumentId(documentSnapshot.getId());
-                    orders.add(new Datos(datos.getDescripcion(),datos.getFecha(),datos.getImagen(),datos.getEmail(),datos.getSin(),datos.getKeyAndIV(),datos.getPassword(),datos.getIv(),datos.getSignature(),datos.getPublicKeyClient()));
+
+                    orders.add(new Datos(datos.getDescripcion(),datos.getFecha(),datos.getImagen(),datos.getEmail(),datos.getSin(),datos.getKeyAndIV(),datos.getPassword(),datos.getIv(),datos.getSignature(),datos.getPublicKeyClient(),datos.getDocumentId()));
                 }
 
                 //Creamos el adaptador
@@ -160,16 +161,6 @@ public class OrdersMain extends BottomSheetDialogFragment {
             city.put("fecha", formatteDate );
             city.put("descripcion","Prueba de correo");
             city.put("email",getActivity().getIntent().getStringExtra(EMAIL));
-            city.put("sin",new String(Base64.encode(byteArray[0])));
-            city.put("keyAndIV",ivAndKey.toString());
-            city.put("password",new String(Base64.encode(password)));
-            city.put("iv",new String(Base64.encode(iv)));
-
-
-
-
-
-
 
 
             FirebaseFirestore db=FirebaseFirestore.getInstance();

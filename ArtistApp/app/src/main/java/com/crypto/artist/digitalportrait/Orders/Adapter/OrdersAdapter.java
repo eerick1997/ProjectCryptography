@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -35,11 +37,17 @@ import org.spongycastle.crypto.params.ParametersWithIV;
 import org.spongycastle.util.encoders.Base64;
 
 import java.io.ByteArrayOutputStream;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
+
+import javax.crypto.KeyGenerator;
 
 public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewHolder> {
 
     static final String TAG = "OrdersAdapter";
+    private static final String ALGORITHM = "AES";
+    private static final int KEY_SIZE = 256;
+    private static final int IV_SIZE = 128;
     String plain="";
     Context context;
     List<Datos> orders;
@@ -61,19 +69,45 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
         holder.txtDate.setText(orders.get(position).getFecha());
         holder.txtStatus.setText(orders.get(position).getDescripcion());
 
-        if(orders.get(position).getDescripcion().equals("Prueba de correo"))
+/*        if(orders.get(position).getDescripcion().equals("Prueba de correo"))
         {
-            holder.btnOrderAction.setChecked(true);
+
         }
-        holder.btnOrderAction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                comenzar(position);
-            }
-        });
+
+
+
+
+  */
+        final byte[] passAux;
+        final byte[] ivAux;
+        KeyGenerator keyGenerator = null;
+        try {
+            keyGenerator = KeyGenerator.getInstance(ALGORITHM);
+            keyGenerator.init(KEY_SIZE);
+            passAux=Base64.decode(holder.ePass.getText().toString().getBytes());
+            final KeyGenerator IVGenerator = KeyGenerator.getInstance(ALGORITHM);
+            ivAux=Base64.decode(holder.eIV.getText().toString().getBytes());
+            holder.btnOrderAction.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    comenzar(position,passAux,ivAux,IVGenerator);
+                }
+            });
+
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+
     }
-    private void comenzar(int position)
+    private void comenzar(int position,byte[]passAux,byte[]ivAux,KeyGenerator IVGenerator)
     {
+
 
 
 
@@ -82,6 +116,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
         Crypto crypto=new Crypto(context);
 
 
+        IVGenerator.init(IV_SIZE);
 
 
 
@@ -90,6 +125,11 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
 
         byte[] ivUse=Base64.decode(orders.get(position).getIv().toString().getBytes());
         byte[] passUse=Base64.decode(orders.get(position).getPassword().toString().getBytes());
+
+
+
+
+
         CipherParameters ivAndKey = new ParametersWithIV(new KeyParameter(passUse), ivUse);
 
         try {
@@ -115,6 +155,8 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
                 Toast.makeText(context,"Firma NO válida",Toast.LENGTH_LONG).show();
             Intent intent =new Intent(context,PhotoEditorMain.class);
             intent.putExtra("image",decryptedMessage);
+
+            intent.putExtra("documentName",orders.get(position).getDocumentId());
             context.startActivity(intent);
         } catch (Exception e) {
             e.printStackTrace();
@@ -181,12 +223,22 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
     public class OrderViewHolder extends RecyclerView.ViewHolder {
 
         TextView txtDate, txtStatus;
-        ToggleButton btnOrderAction;
+        Button btnOrderAction;
+
+        EditText ePass;
+        EditText eIV;
+
+
+
+
         public OrderViewHolder(@NonNull final View itemView) {
             super(itemView);
             txtDate = itemView.findViewById(R.id.txt_date);
             txtStatus = itemView.findViewById(R.id.txt_status);
             btnOrderAction = itemView.findViewById(R.id.btn_order_edit);
+            ePass=itemView.findViewById(R.id.ePass);
+            eIV=itemView.findViewById(R.id.eIV);
+
 /*
             btnOrderAction.setOnClickListener(new View.OnClickListener() {
                 @Override
