@@ -454,54 +454,7 @@ public class PhotoEditorMain extends AppCompatActivity implements FilterListFrag
 
             }
         });
-       /* Dexter.withActivity(this)
-                .withPermissions(Manifest.permission.READ_EXTERNAL_STORAGE,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                .withListener(new MultiplePermissionsListener() {
-                    @Override
-                    public void onPermissionsChecked(MultiplePermissionsReport report) {
-                        if(report.areAllPermissionsGranted()){
-                            photoEditor.saveAsBitmap(new OnSaveBitmap() {
-                                @Override
-                                public void onBitmapReady(Bitmap saveBitmap) {
-                                    try{
-                                        photoEditorView.getSource().setImageBitmap(saveBitmap);
-                                        final String path = BitmapUtils.insertImage(getContentResolver(), saveBitmap,
-                                                System.currentTimeMillis() + "_profile.png", null);
-                                        if (!TextUtils.isEmpty(path)){
-                                            Snackbar snackbar = Snackbar.make(coordinatorLayout, R.string.image_saved,
-                                                    Snackbar.LENGTH_LONG).setAction("OPEN", new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    openImage(path);
-                                                }
-                                            });
-                                            snackbar.show();
-                                        } else {
-                                            Snackbar snackbar = Snackbar.make(coordinatorLayout, R.string.image_not_saved,
-                                                    Snackbar.LENGTH_LONG);
-                                            snackbar.show();
-                                        }
-                                    } catch (Exception e){
-                                        e.printStackTrace();
-                                    }
-                                }
-
-                                @Override
-                                public void onFailure(Exception e) {
-
-                                }
-                            });
-                        } else {
-                            Toast.makeText(PhotoEditorMain.this, R.string.permission_denied, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
-                        token.continuePermissionRequest();
-                    }
-                }).check();*/
+        finish();
     }
 
     private void openImage(String path){
