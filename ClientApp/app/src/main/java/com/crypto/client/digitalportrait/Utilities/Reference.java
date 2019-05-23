@@ -26,6 +26,8 @@ public class Reference {
     public static final String CONTRACTS = "contratos";
     public static final String PUBLICKEY = "publickey";
     public static final String PUBLICKEYA = "publickeyartist";
+    public static final String PUBLICKEYCLIENT = "publicKeyClient";
+    public static final String SIGNATURE = "signature";
 
     // Preferences
     public static final String NAME_PREFERENCES = "keys";

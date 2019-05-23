@@ -33,6 +33,22 @@
                 android:paddingRight="2dp"
                 android:text="Description" />
 
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="password" />
+
+            <EditText
+                android:id="@+id/et_IV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="IV" />
+
             <Button
                 android:id="@+id/btn_show_result"
                 style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"

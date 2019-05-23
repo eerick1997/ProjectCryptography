@@ -100,24 +100,21 @@ public class AddOrder extends AppCompatActivity {
         });
     }
 
-    private void sendOrder() throws Exception{
+    private void sendOrder() throws Exception {
         show();
-        EditText ePass = findViewById(R.id.ePass);
-        EditText eIV = findViewById(R.id.eIV);
 
         final Crypto crypto = new Crypto(AddOrder.this);
 
         KeyGenerator keyGenerator = KeyGenerator.getInstance(ALGORITHM);
         keyGenerator.init(KEY_SIZE);
-        byte[] passAux = Base64.decode(ePass.getText().toString().getBytes());
+        byte[] password = keyGenerator.generateKey().getEncoded();
         KeyGenerator IVGenerator = KeyGenerator.getInstance(ALGORITHM);
-        final byte[] ivAux = Base64.decode(eIV.getText().toString().getBytes());
         IVGenerator.init(IV_SIZE);
 
         final byte[][] byteArray = {null};
+        final byte[] IV = IVGenerator.generateKey().getEncoded();
 
-
-        CipherParameters IVAndKey = new ParametersWithIV(new KeyParameter(passAux), ivAux);
+        CipherParameters IVAndKey = new ParametersWithIV(new KeyParameter(password), IV);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         originalBitmap.compress(Bitmap.CompressFormat.JPEG, 70, byteArrayOutputStream);
         byteArray[0] = byteArrayOutputStream.toByteArray();
@@ -140,27 +137,21 @@ public class AddOrder extends AppCompatActivity {
         }
 
 
-
-
-        final byte[]decryptedMessage=crypto.decrypt(cipherMessage,IVAndKey);
+        final byte[] decryptedMessage = crypto.decrypt(cipherMessage, IVAndKey);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decryptedMessage, 0, decryptedMessage.length);
 
 
         crypto.signGenerator(decodedByte);
 
 
-        order.put(DESCRIPTION, txtDescription.getText().toString() );
+        order.put(DESCRIPTION, txtDescription.getText().toString());
         order.put(EMAIL_O, strEmail);
-        order.put(SIN, new String(Base64.encode(byteArray[0])));
-        order.put(KEYANDIV, IVAndKey.toString());
-        order.put(PASSWORD, new String(Base64.encode(passAux)));
-        order.put(Reference.IV, new String(Base64.encode(ivAux)));
-        order.put("publicKeyClient",new String((crypto.getPublicKey())));
-        order.put("signature",new String((crypto.getSignature())));
+        order.put(PUBLICKEYCLIENT, new String((crypto.getPublicKey())));
+        order.put(SIGNATURE, new String((crypto.getSignature())));
 
 
-        Log.i("SIG",new String(crypto.getSignature()));
-        boolean verify=crypto.verifySign(decodedByte,new String(crypto.getPublicKey()).getBytes(),new String(crypto.getSignature()).getBytes());
+        Log.i("SIG", new String(crypto.getSignature()));
+        boolean verify = crypto.verifySign(decodedByte, new String(crypto.getPublicKey()).getBytes(), new String(crypto.getSignature()).getBytes());
         Log.i("VERIFY--", String.valueOf(verify));
 
         FirebaseFirestore DB = FirebaseFirestore.getInstance();
@@ -170,9 +161,7 @@ public class AddOrder extends AppCompatActivity {
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
                         Toast.makeText(getApplicationContext(), getString(R.string.order_sent_successfully), Toast.LENGTH_LONG).show();
-                        hide();
-                        //IV?
-                        sendKeyByEmail(crypto.getPrivateKey(), ivAux);
+                        sendKeyByEmail(crypto.getPrivateKey(), IV);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -180,7 +169,6 @@ public class AddOrder extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                         Log.w(TAG, "Error adding document", e);
                         Toast.makeText(getApplicationContext(), getString(R.string.order_not_sent_successfully), Toast.LENGTH_LONG).show();
-                        hide();
                     }
                 });
 
@@ -188,13 +176,13 @@ public class AddOrder extends AppCompatActivity {
 
     }
 
-    private void openImageFromGallery(){
+    private void openImageFromGallery() {
         Dexter.withActivity(this).withPermissions(Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 .withListener(new MultiplePermissionsListener() {
                     @Override
                     public void onPermissionsChecked(MultiplePermissionsReport report) {
-                        if(report.areAllPermissionsGranted()){
+                        if (report.areAllPermissionsGranted()) {
                             Intent intent = new Intent(Intent.ACTION_PICK);
                             intent.setType("image/*");
                             startActivityForResult(intent, PERMISSION_PICK_IMAGE);
@@ -221,14 +209,14 @@ public class AddOrder extends AppCompatActivity {
         }
     }
 
-    private void sendKeyByEmail(byte[] privateKey, byte[] IV){
+    private void sendKeyByEmail(byte[] privateKey, byte[] IV) {
         Log.d(TAG, "sendKeyByEmail() called with: privateKey = [" + privateKey + "]");
 
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("message/rfc822");
-        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{strEmail, "vargas.erick030997@gmail.com", "albertoesquivel.97@gmail.com"});
+        i.putExtra(Intent.EXTRA_EMAIL, new String[]{strEmail, "vargas.erick030997@gmail.com", "albertoesquivel.97@gmail.com"});
         i.putExtra(Intent.EXTRA_SUBJECT, "Tu llave privada");
-        i.putExtra(Intent.EXTRA_TEXT   , new String(Base64.encode(privateKey)) + " \n\nvector de inicialización\n\n" + new String(Base64.encode(IV)));
+        i.putExtra(Intent.EXTRA_TEXT, new String(Base64.encode(privateKey)) + " \n\nvector de inicialización\n\n" + new String(Base64.encode(IV)));
         try {
             startActivity(Intent.createChooser(i, getString(R.string.title_email)));
         } catch (android.content.ActivityNotFoundException ex) {
@@ -236,8 +224,14 @@ public class AddOrder extends AppCompatActivity {
         }
     }
 
-    public void show(){
-        if (progressDialog == null){
+    @Override
+    protected void onStop() {
+        super.onStop();
+        hide();
+    }
+
+    public void show() {
+        if (progressDialog == null) {
             progressDialog = new ProgressDialog(this);
             progressDialog.setMessage(getString(R.string.loading));
             progressDialog.setIndeterminate(true);
@@ -246,8 +240,8 @@ public class AddOrder extends AppCompatActivity {
         progressDialog.show();
     }
 
-    public void hide(){
-        if (progressDialog != null && progressDialog.isShowing()){
+    public void hide() {
+        if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
     }

@@ -61,12 +61,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     protected void onStart() {
         try {
             FirebaseUser user = firebaseAuth.getCurrentUser();
-            if(user != null){
+            if (user != null) {
                 sendToAnActivity(user);
             }
             //Maybe update the GUI
             super.onStart();
-        } catch (Exception e){
+        } catch (Exception e) {
             Log.e(TAG, "onStart: ", e);
         }
     }
@@ -81,12 +81,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == RC_SIGN_IN){
+        if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try{
+            try {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
-            } catch (ApiException e){
+            } catch (ApiException e) {
                 Log.w(TAG, "onActivityResult: ", e);
                 //Maybe update the GUI again
             }
@@ -101,7 +101,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             Log.d(TAG, "signInCredential:success");
                             FirebaseUser user = firebaseAuth.getCurrentUser();
                             Log.i(TAG, "onComplete: " + user.getEmail());
@@ -115,7 +115,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 });
     }
 
-    private void signIn(){
+    private void signIn() {
         Intent signInIntent = googleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -132,7 +132,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 });
     }
 
-    private void sendToAnActivity(FirebaseUser user){
+    private void sendToAnActivity(FirebaseUser user) {
         Log.d(TAG, "sendToAnActivity() called with: user = [" + user + "]");
         Intent intent = new Intent(Login.this, DrawerMain.class);
         intent.putExtra(USER_NAME, user.getDisplayName());
@@ -140,7 +140,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         String photo;
         try {
             photo = user.getPhotoUrl().toString();
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             Log.e(TAG, "sendToAnActivity: ", e);
             photo = "empty";
         }
@@ -148,8 +148,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         startActivity(intent);
     }
 
-    public void show(){
-        if (progressDialog == null){
+    public void show() {
+        if (progressDialog == null) {
             progressDialog = new ProgressDialog(this);
             progressDialog.setMessage(getString(R.string.loading));
             progressDialog.setIndeterminate(true);
@@ -158,8 +158,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         progressDialog.show();
     }
 
-    public void hide(){
-        if (progressDialog != null && progressDialog.isShowing()){
+    public void hide() {
+        if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
     }

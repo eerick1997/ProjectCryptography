@@ -7,11 +7,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.crypto.client.digitalportrait.Orders.Adapter.OrderCompleted;
 import com.crypto.client.digitalportrait.Orders.Objects.Datos;
@@ -24,8 +29,15 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import org.spongycastle.crypto.CipherParameters;
+import org.spongycastle.crypto.params.KeyParameter;
+import org.spongycastle.crypto.params.ParametersWithIV;
+import org.spongycastle.util.encoders.Base64;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.crypto.KeyGenerator;
 
 import static com.crypto.client.digitalportrait.Utilities.Reference.*;
 
@@ -33,6 +45,7 @@ public class CompletedOrder extends BottomSheetDialogFragment {
 
     private static final String TAG = "OrdersMain";
     private String strEmail;
+
     @SuppressLint("WrongConstant")
     @Nullable
     @Override
@@ -50,13 +63,15 @@ public class CompletedOrder extends BottomSheetDialogFragment {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
                 datos.clear();
-                if(e!=null)
+                if (e != null)
                     return;
 
-                for(QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots) {
+                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                     Datos data = documentSnapshot.toObject(Datos.class);
                     data.setDocumentId(documentSnapshot.getId());
-                    datos.add(new Datos(data.getDescripcion(), data.getFecha(), data.getImagen(), data.getEmail()));
+                    datos.add(new Datos(data.getDescripcion(), data.getFecha(), data.getImagen(), data.getEmail(),
+                            data.getEstado(), data.getPublicKeyArtist(), data.getSignatureArtist(), data.getImageArtist(),
+                            data.getPublicKeyClient(), data.getSignatureClient()));
                 }
 
                 //Creamos el adaptador
@@ -69,7 +84,7 @@ public class CompletedOrder extends BottomSheetDialogFragment {
             }
         });
 
-        return  itemView;
+        return itemView;
     }
 
 }

@@ -34,36 +34,6 @@
                 android:paddingRight="2dp"
                 android:text="Editing" />
 
-            <EditText
-                android:id="@+id/ePass"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="passWord" />
-
-            <EditText
-                android:id="@+id/eIV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="IV" />
-
-            <ToggleButton
-                android:id="@+id/btn_order_action"
-                style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-
-                android:layout_alignBottom="@id/txt_status"
-                android:backgroundTint="@color/button_background_color"
-                android:clickable="true"
-                android:fontFamily="@font/roboto_medium"
-                android:textOff="@string/btn_accept"
-                android:textOn="@string/btn_edit" />
-
         </LinearLayout>
 
     </RelativeLayout>
