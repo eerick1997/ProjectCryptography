@@ -15,7 +15,7 @@ public class Reference {
     public static final String CLIENTS1 = "cliente1";
     public static final String ORDERS = "pedidos";
     //Firebase objects reference
-    public static final String IMAGE = "imagen";
+    public static final String IMAGE = "imagen";x
     public static final String DATE = "fecha";
     public static final String DESCRIPTION = "descripcion";
     public static final String EMAIL_O = "email";
@@ -29,6 +29,7 @@ public class Reference {
     public static final String PUBLICKEYCLIENT = "publicKeyClient";
     public static final String SIGNATURECLIENT = "signatureClient";
     public static final String SIGNATUREARTIST = "singatureArtist";
+    public static final String STATE = "estado";
 
     // Preferences
     public static final String NAME_PREFERENCES = "keys";

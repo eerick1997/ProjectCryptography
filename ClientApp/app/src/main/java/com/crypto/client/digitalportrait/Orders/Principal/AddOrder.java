@@ -118,7 +118,6 @@ public class AddOrder extends AppCompatActivity {
         byteArray[0] = byteArrayOutputStream.toByteArray();
 
         byte[] cipherMessage = crypto.encrypt(byteArray[0], IVAndKey);
-        final Preferences preferences = new Preferences(AddOrder.this);
 
         Calendar calendar = new GregorianCalendar();
         Date date = calendar.getTime();
@@ -143,6 +142,7 @@ public class AddOrder extends AppCompatActivity {
         order.put(EMAIL_O, strEmail);
         order.put(PUBLICKEYCLIENT, new String((crypto.getPublicKey())));
         order.put(SIGNATURECLIENT, new String((crypto.getSignature())));
+        order.put(STATE, "Enviado");
 
 
         Log.i("SIG", new String(crypto.getSignature()));
