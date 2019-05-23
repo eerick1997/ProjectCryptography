@@ -13,7 +13,7 @@
     <string name="menu_sent">Enviados</string>
     <string name="digital_portraits">Digital Portraits</string>
     <string name="empecemos">¡Empecemos!</string>
-    <string name="title_orders">Pedidos</string>
+    <string name="title_orders">Enviados</string>
     <string name="title_sent">Enviados</string>
     <string name="title_editor">Editor de imágenes</string>
     <string name="permission_denied">No se han concedido permisos</string>
@@ -52,4 +52,5 @@
     <string name="not_services_found">No hay servicios de correo electrónico deisponibles.</string>
     <string name="title_email">Enviar correo</string>
     <string name="btn_show_result">Resultado</string>
+    <string name="title_finished">Recibidos</string>
 </resources>

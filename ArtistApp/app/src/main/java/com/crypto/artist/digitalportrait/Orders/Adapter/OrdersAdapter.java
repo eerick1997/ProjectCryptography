@@ -79,9 +79,9 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
                     KeyGenerator keyGenerator = KeyGenerator.getInstance(ALGORITHM);
                     keyGenerator.init(KEY_SIZE);
                     final byte[] passAux = Base64.decode(holder.ePass.getText().toString().getBytes());
-                    Log.i("passAUX",new String(holder.ePass.getText().toString().getBytes()));
+                    Log.i("passAUX",new String(holder.ePass.getText().toString().trim().getBytes()));
                     final KeyGenerator IVGenerator = KeyGenerator.getInstance(ALGORITHM);
-                    final byte[] ivAux = Base64.decode(holder.eIV.getText().toString().getBytes());
+                    final byte[] ivAux = Base64.decode(holder.eIV.getText().toString().trim().getBytes());
                     comenzar(position, passAux, ivAux, IVGenerator);
                 } catch (NoSuchAlgorithmException e) {
                     Log.e(TAG, "onClick: ", e);

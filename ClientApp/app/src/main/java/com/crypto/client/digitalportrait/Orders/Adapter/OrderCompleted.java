@@ -63,9 +63,9 @@ public class OrderCompleted extends RecyclerView.Adapter<OrderCompleted.OrderVie
                 try {
                     KeyGenerator keyGenerator = KeyGenerator.getInstance(ALGORITHM);
                     keyGenerator.init(KEY_SIZE);
-                    final byte[] passAux = Base64.decode(holder.etPassword.getText().toString().getBytes());
+                    final byte[] passAux = Base64.decode(holder.etPassword.getText().toString().trim().getBytes());
                     final KeyGenerator IVGenerator = KeyGenerator.getInstance(ALGORITHM);
-                    final byte[] ivAux = Base64.decode(holder.etIV.getText().toString().getBytes());
+                    final byte[] ivAux = Base64.decode(holder.etIV.getText().toString().trim().getBytes());
                     comenzar(position, passAux, ivAux, IVGenerator);
                 } catch (NoSuchAlgorithmException e) {
                     Log.e(TAG, "onClick: ", e);

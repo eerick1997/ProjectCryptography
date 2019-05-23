@@ -109,7 +109,7 @@ public class DrawerMain extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, om).commit();
             lastId = id;
         } else if (id == R.id.nav_finished && lastId != R.id.nav_finished) {
-            getSupportActionBar().setTitle(R.string.title_sent);
+            getSupportActionBar().setTitle(R.string.title_finished);
             CompletedOrder co = new CompletedOrder();
             co.setArguments(bundle);
             getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, co).commit();
