@@ -10,6 +10,7 @@ import android.os.Bundle;
 
 import com.crypto.client.digitalportrait.CryptoUtils.Crypto;
 import com.crypto.client.digitalportrait.Orders.Utils.BitmapUtils;
+import com.crypto.client.digitalportrait.Utilities.Preferences;
 import com.crypto.client.digitalportrait.Utilities.Reference;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -102,15 +103,12 @@ public class AddOrder extends AppCompatActivity {
 
     private void sendOrder() throws Exception {
         show();
-
         final Crypto crypto = new Crypto(AddOrder.this);
-
         KeyGenerator keyGenerator = KeyGenerator.getInstance(ALGORITHM);
         keyGenerator.init(KEY_SIZE);
-        byte[] password = keyGenerator.generateKey().getEncoded();
+        final byte[] password = keyGenerator.generateKey().getEncoded();
         KeyGenerator IVGenerator = KeyGenerator.getInstance(ALGORITHM);
         IVGenerator.init(IV_SIZE);
-
         final byte[][] byteArray = {null};
         final byte[] IV = IVGenerator.generateKey().getEncoded();
 
@@ -119,8 +117,8 @@ public class AddOrder extends AppCompatActivity {
         originalBitmap.compress(Bitmap.CompressFormat.JPEG, 70, byteArrayOutputStream);
         byteArray[0] = byteArrayOutputStream.toByteArray();
 
-        //Bitmap comppressedBitmap = BitmapFactory.decodeByteArray(byteArray[0], 0, byteArray[0].length);
         byte[] cipherMessage = crypto.encrypt(byteArray[0], IVAndKey);
+        final Preferences preferences = new Preferences(AddOrder.this);
 
         Calendar calendar = new GregorianCalendar();
         Date date = calendar.getTime();
@@ -136,18 +134,15 @@ public class AddOrder extends AppCompatActivity {
             return;
         }
 
-
         final byte[] decryptedMessage = crypto.decrypt(cipherMessage, IVAndKey);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decryptedMessage, 0, decryptedMessage.length);
 
-
         crypto.signGenerator(decodedByte);
-
 
         order.put(DESCRIPTION, txtDescription.getText().toString());
         order.put(EMAIL_O, strEmail);
         order.put(PUBLICKEYCLIENT, new String((crypto.getPublicKey())));
-        order.put(SIGNATURE, new String((crypto.getSignature())));
+        order.put(SIGNATURECLIENT, new String((crypto.getSignature())));
 
 
         Log.i("SIG", new String(crypto.getSignature()));
@@ -161,7 +156,7 @@ public class AddOrder extends AppCompatActivity {
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
                         Toast.makeText(getApplicationContext(), getString(R.string.order_sent_successfully), Toast.LENGTH_LONG).show();
-                        sendKeyByEmail(crypto.getPrivateKey(), IV);
+                        sendKeyByEmail(password, IV);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -171,7 +166,6 @@ public class AddOrder extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), getString(R.string.order_not_sent_successfully), Toast.LENGTH_LONG).show();
                     }
                 });
-
         finish();
 
     }
@@ -209,14 +203,12 @@ public class AddOrder extends AppCompatActivity {
         }
     }
 
-    private void sendKeyByEmail(byte[] privateKey, byte[] IV) {
-        Log.d(TAG, "sendKeyByEmail() called with: privateKey = [" + privateKey + "]");
-
+    private void sendKeyByEmail(byte[] password, byte[] IV) {
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("message/rfc822");
         i.putExtra(Intent.EXTRA_EMAIL, new String[]{strEmail, "vargas.erick030997@gmail.com", "albertoesquivel.97@gmail.com"});
         i.putExtra(Intent.EXTRA_SUBJECT, "Tu llave privada");
-        i.putExtra(Intent.EXTRA_TEXT, new String(Base64.encode(privateKey)) + " \n\nvector de inicialización\n\n" + new String(Base64.encode(IV)));
+        i.putExtra(Intent.EXTRA_TEXT, new String(Base64.encode(password)) + " \n\nvector de inicialización\n\n" + new String(Base64.encode(IV)));
         try {
             startActivity(Intent.createChooser(i, getString(R.string.title_email)));
         } catch (android.content.ActivityNotFoundException ex) {

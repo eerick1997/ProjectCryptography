@@ -130,30 +130,6 @@ public class Crypto {
         return new BufferedInputStream(is);
     }
 
-    /*, byte[] sign, byte[] pubKey
-    public boolean verifySign(Bitmap bitmap) throws Exception{
-        Security.insertProviderAt(new BouncyCastleProvider(), 1);
-        X509EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(Base64.decodeBase64(new Preferences(context).get("publicKey")));
-        KeyFactory keyFactory = KeyFactory.getInstance(ALGORITHM, PROVIDER);
-        //Getting public key
-        PublicKey publicKey = keyFactory.generatePublic(publicKeySpec);
-
-        //Verify signature
-        Signature signature = Signature.getInstance(ALGORITHM_SIGN, PROVIDER);
-        signature.initVerify(publicKey);
-
-        BufferedInputStream bufferedInputStream = fromBitmapToBIS(bitmap);
-        byte[] buffer = new byte[KEY_SIZE];
-        int length;
-        while (bufferedInputStream.available() != 0){
-            length = bufferedInputStream.read(buffer);
-            signature.update(buffer, 0, length);
-        }
-        bufferedInputStream.close();
-        return (signature.verify(Base64.decodeBase64(new Preferences(context).get("signature"))));
-    }
-*/
-
 
     public boolean verifySign(Bitmap bitmap,byte[] publicKeyClient,byte[] signatureClient) throws Exception{
         Security.insertProviderAt(new BouncyCastleProvider(), 1);

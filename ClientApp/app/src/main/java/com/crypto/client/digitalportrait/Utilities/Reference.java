@@ -27,7 +27,8 @@ public class Reference {
     public static final String PUBLICKEY = "publickey";
     public static final String PUBLICKEYA = "publickeyartist";
     public static final String PUBLICKEYCLIENT = "publicKeyClient";
-    public static final String SIGNATURE = "signature";
+    public static final String SIGNATURECLIENT = "signatureClient";
+    public static final String SIGNATUREARTIST = "singatureArtist";
 
     // Preferences
     public static final String NAME_PREFERENCES = "keys";
