@@ -42,6 +42,8 @@ import java.util.List;
 
 import javax.crypto.KeyGenerator;
 
+import static com.crypto.artist.digitalportrait.Utilities.Reference.EMAIL;
+
 public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewHolder> {
 
     static final String TAG = "OrdersAdapter";
@@ -120,15 +122,17 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
 
             boolean verify=crypto.verifySign(decodedByte,pubK,signa);
             Log.i("VERIFY" , String.valueOf(verify));
-            if(verify)
-                Toast.makeText(context,"Firma válida",Toast.LENGTH_LONG).show();
-            else
+            if(verify) {
+                Toast.makeText(context, "Firma válida", Toast.LENGTH_LONG).show();
+                Intent intent =new Intent(context,PhotoEditorMain.class);
+                intent.putExtra("image",decryptedMessage);
+                intent.putExtra(EMAIL, orders.get(position).getEmail());
+                intent.putExtra("documentName",orders.get(position).getDocumentId());
+                context.startActivity(intent);
+            } else
                 Toast.makeText(context,"Firma NO válida",Toast.LENGTH_LONG).show();
-            Intent intent =new Intent(context,PhotoEditorMain.class);
-            intent.putExtra("image",decryptedMessage);
 
-            intent.putExtra("documentName",orders.get(position).getDocumentId());
-            context.startActivity(intent);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

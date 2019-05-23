@@ -40,4 +40,6 @@
     <string name="loading">Espere un momento porfavor...</string>
     <string name="contracts">Contratos pendientes</string>
     <string name="title_contract">Contratos pendientes</string>
+    <string name="not_services_found">No hay servicios de correo electrónico deisponibles.</string>
+    <string name="title_email">Enviar correo</string>
 </resources>

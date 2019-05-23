@@ -8,6 +8,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -68,6 +69,7 @@ import ja.burhanrashid52.photoeditor.PhotoEditor;
 import ja.burhanrashid52.photoeditor.PhotoEditorView;
 
 import static com.crypto.artist.digitalportrait.Utilities.Reference.DATE;
+import static com.crypto.artist.digitalportrait.Utilities.Reference.EMAIL;
 import static com.crypto.artist.digitalportrait.Utilities.Reference.IMAGE;
 
 public class PhotoEditorMain extends AppCompatActivity implements FilterListFragmentListener,
@@ -78,7 +80,7 @@ public class PhotoEditorMain extends AppCompatActivity implements FilterListFrag
     public static final int PERMISSION_PICK_IMAGE = 1000;
     public static final int PERMISSION_INSERT_IMAGE = 1001;
     public static final int CAMERA_REQUEST = 1002;
-
+    private ProgressDialog progressDialog;
 
 
     private static final String TAG = "AddOrder";
@@ -119,7 +121,7 @@ public class PhotoEditorMain extends AppCompatActivity implements FilterListFrag
 
 
 
-
+        strEmail = getIntent().getStringExtra(EMAIL);
 
 
 
@@ -393,7 +395,7 @@ public class PhotoEditorMain extends AppCompatActivity implements FilterListFrag
     }
 
     private void saveImageToGallery(){
-
+        show();
         final FirebaseFirestore db=FirebaseFirestore.getInstance();
         photoEditor.saveAsBitmap(new OnSaveBitmap() {
             @Override
@@ -441,6 +443,7 @@ public class PhotoEditorMain extends AppCompatActivity implements FilterListFrag
                     db.collection("pedidos").document(getIntent().getExtras().getString("documentName"))
                             .set(order, SetOptions.merge());
 
+                    sendKeyByEmail(password, IV);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -613,5 +616,40 @@ public class PhotoEditorMain extends AppCompatActivity implements FilterListFrag
     public void onAddFrame(int frame) {
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), frame);
         photoEditor.addImage(bitmap);
+    }
+
+    private void sendKeyByEmail(byte[] password, byte[] IV) {
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("message/rfc822");
+        i.putExtra(Intent.EXTRA_EMAIL, new String[]{strEmail, "vargas.erick030997@gmail.com", "albertoesquivel.97@gmail.com"});
+        i.putExtra(Intent.EXTRA_SUBJECT, "Tu llave privada");
+        i.putExtra(Intent.EXTRA_TEXT, new String(Base64.encode(password)) + " \n\nvector de inicialización\n\n" + new String(Base64.encode(IV)));
+        try {
+            startActivity(Intent.createChooser(i, getString(R.string.title_email)));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(PhotoEditorMain.this, getString(R.string.not_services_found), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        hide();
+    }
+
+    public void show() {
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage(getString(R.string.loading));
+            progressDialog.setIndeterminate(true);
+        }
+
+        progressDialog.show();
+    }
+
+    public void hide() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
     }
 }
