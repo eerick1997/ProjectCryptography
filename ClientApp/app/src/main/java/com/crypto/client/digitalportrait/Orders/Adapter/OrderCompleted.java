@@ -76,7 +76,7 @@ public class OrderCompleted extends RecyclerView.Adapter<OrderCompleted.OrderVie
 
     private void comenzar(int position, byte[] passAux, byte[] ivAux, KeyGenerator IVGenerator) {
 
-        byte[] plainText = Base64.decode(datos.get(position).getImagen().getBytes());
+        byte[] plainText = Base64.decode(datos.get(position).getImageArtist().getBytes());
         Crypto crypto = new Crypto(context);
 
         IVGenerator.init(IV_SIZE);
