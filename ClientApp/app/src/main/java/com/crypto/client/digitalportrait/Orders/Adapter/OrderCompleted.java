@@ -74,21 +74,21 @@ public class OrderCompleted extends RecyclerView.Adapter<OrderCompleted.OrderVie
         });
     }
 
-    private void comenzar(int position, byte[] passUse, byte[] ivUse, KeyGenerator IVGenerator) {
+    private void comenzar(int position, byte[] passAux, byte[] ivAux, KeyGenerator IVGenerator) {
 
         byte[] plainText = Base64.decode(datos.get(position).getImagen().getBytes());
         Crypto crypto = new Crypto(context);
 
         IVGenerator.init(IV_SIZE);
 
-        CipherParameters ivAndKey = new ParametersWithIV(new KeyParameter(passUse), ivUse);
+        CipherParameters ivAndKey = new ParametersWithIV(new KeyParameter(passAux), ivAux);
 
         try {
             final byte[] decryptedMessage = crypto.decrypt(plainText, ivAndKey);
             Bitmap decodedByte = BitmapFactory.decodeByteArray(decryptedMessage, 0, decryptedMessage.length);
 
             byte[] signa = datos.get(position).getSignatureArtist().getBytes();
-            byte[] pubK = datos.get(position).getPublicKeyClient().getBytes();
+            byte[] pubK = datos.get(position).getPublicKeyArtist().getBytes();
 
             Log.i("SIG", new String(signa));
             Log.i("PUBK", new String(pubK));
@@ -102,8 +102,9 @@ public class OrderCompleted extends RecyclerView.Adapter<OrderCompleted.OrderVie
 
                 intent.putExtra("documentName", datos.get(position).getDocumentId());
                 context.startActivity(intent);
-            } else
+            } else {
                 Toast.makeText(context, "Firma NO válida", Toast.LENGTH_LONG).show();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

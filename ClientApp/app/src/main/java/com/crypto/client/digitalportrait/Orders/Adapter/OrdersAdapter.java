@@ -18,9 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.crypto.client.digitalportrait.Orders.Objects.Order;
 import com.crypto.client.digitalportrait.R;
 
-import org.spongycastle.util.encoders.Base64;
-
-import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewHolder> {

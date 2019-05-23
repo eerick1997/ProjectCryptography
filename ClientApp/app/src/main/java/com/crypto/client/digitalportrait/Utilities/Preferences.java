@@ -19,8 +19,8 @@ public class Preferences {
     }
 
 
-    public String bytesToString(byte[] bytes){
-        if (bytes == null){
+    public String bytesToString(byte[] bytes) {
+        if (bytes == null) {
             return null;
         }
         if (bytes.length == 0)
@@ -37,65 +37,64 @@ public class Preferences {
         return sb.toString();
     }
 
-    public byte[] stringToBytes(String data){
-        String hexString=data.toUpperCase().trim();
-        if (hexString.length()%2!=0) {
+    public byte[] stringToBytes(String data) {
+        String hexString = data.toUpperCase().trim();
+        if (hexString.length() % 2 != 0) {
             return null;
         }
         byte[] retData = new byte[hexString.length() / 2];
-        for(int i=0;i<hexString.length();i++)
-        {
+        for (int i = 0; i < hexString.length(); i++) {
             int int_ch;
             char hex_char1 = hexString.charAt(i);
             int int_ch1;
-            if(hex_char1 >= '0' && hex_char1 <='9')
-                int_ch1 = (hex_char1-48)*16;
-            else if(hex_char1 >= 'A' && hex_char1 <='F')
-                int_ch1 = (hex_char1-55)*16;
+            if (hex_char1 >= '0' && hex_char1 <= '9')
+                int_ch1 = (hex_char1 - 48) * 16;
+            else if (hex_char1 >= 'A' && hex_char1 <= 'F')
+                int_ch1 = (hex_char1 - 55) * 16;
             else
                 return null;
             i++;
             char hex_char2 = hexString.charAt(i);
             int int_ch2;
-            if(hex_char2 >= '0' && hex_char2 <='9')
-                int_ch2 = (hex_char2-48);
-            else if(hex_char2 >= 'A' && hex_char2 <='F')
-                int_ch2 = hex_char2-55;
+            if (hex_char2 >= '0' && hex_char2 <= '9')
+                int_ch2 = (hex_char2 - 48);
+            else if (hex_char2 >= 'A' && hex_char2 <= 'F')
+                int_ch2 = hex_char2 - 55;
             else
                 return null;
-            int_ch = int_ch1+int_ch2;
-            retData[i/2]=(byte) int_ch;//The converted number into Byte
+            int_ch = int_ch1 + int_ch2;
+            retData[i / 2] = (byte) int_ch;//The converted number into Byte
         }
         return retData;
     }
 
-    public void store(@NonNull String key, @NonNull byte[] data){
+    public void store(@NonNull String key, @NonNull byte[] data) {
         try {
             sharedPreferences = context.getSharedPreferences(NAME_PREFERENCES, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString(key, bytesToString(data));
             editor.apply();
-        } catch (Exception e){
+        } catch (Exception e) {
             Log.e(TAG, "save: ", e);
         }
     }
 
-    public byte[] get(@NonNull String key){
+    public byte[] get(@NonNull String key) {
         try {
             sharedPreferences = context.getSharedPreferences(NAME_PREFERENCES, Context.MODE_PRIVATE);
             String str = sharedPreferences.getString(key, null);
             return stringToBytes(str);
-        } catch (Exception e){
+        } catch (Exception e) {
             Log.e(TAG, "get: ", e);
         }
         return null;
     }
 
-    public String getStr(@NonNull String key){
+    public String getStr(@NonNull String key) {
         try {
             sharedPreferences = context.getSharedPreferences(NAME_PREFERENCES, Context.MODE_PRIVATE);
             return sharedPreferences.getString(key, null);
-        } catch (Exception e){
+        } catch (Exception e) {
             Log.e(TAG, "get: ", e);
         }
         return null;

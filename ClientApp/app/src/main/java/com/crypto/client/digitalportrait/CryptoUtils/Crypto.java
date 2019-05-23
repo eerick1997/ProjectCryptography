@@ -52,10 +52,10 @@ public class Crypto {
     public byte[] cipherData(PaddedBufferedBlockCipher cipher, byte[] data) throws Exception {
         byte[] outputBuffer = new byte[cipher.getOutputSize(data.length)];
 
-        int length1 = cipher.processBytes(data,  0, data.length, outputBuffer, 0);
+        int length1 = cipher.processBytes(data, 0, data.length, outputBuffer, 0);
         int length2 = cipher.doFinal(outputBuffer, length1);
 
-        byte[] result = new byte[length1+length2];
+        byte[] result = new byte[length1 + length2];
 
         System.arraycopy(outputBuffer, 0, result, 0, result.length);
 
@@ -81,12 +81,12 @@ public class Crypto {
                         new AESEngine()
                 )
         );
-        aes.init(false,  ivAndKey);
+        aes.init(false, ivAndKey);
 
         return cipherData(aes, cipher);
     }
 
-    public void signGenerator(Bitmap bitmap) throws Exception{
+    public void signGenerator(Bitmap bitmap) throws Exception {
         Security.insertProviderAt(new BouncyCastleProvider(), 1);
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(ALGORITHM, PROVIDER);
         keyPairGenerator.initialize(KEY_SIZE, new SecureRandom());
@@ -100,7 +100,7 @@ public class Crypto {
 
         byte[] buffer = new byte[KEY_SIZE];
         int length;
-        while(bufferedInputStream.available() != 0){
+        while (bufferedInputStream.available() != 0) {
             length = bufferedInputStream.read(buffer);
             RSA.update(buffer, 0, length);
         }
@@ -119,19 +119,18 @@ public class Crypto {
         //It's necessary store F1 and F2
 
 
-
     }
 
 
-    public BufferedInputStream fromBitmapToBIS(Bitmap bitmap){
+    public BufferedInputStream fromBitmapToBIS(Bitmap bitmap) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-        InputStream is = new ByteArrayInputStream(stream. toByteArray());
+        InputStream is = new ByteArrayInputStream(stream.toByteArray());
         return new BufferedInputStream(is);
     }
 
 
-    public boolean verifySign(Bitmap bitmap,byte[] publicKeyClient,byte[] signatureClient) throws Exception{
+    public boolean verifySign(Bitmap bitmap, byte[] publicKeyClient, byte[] signatureClient) throws Exception {
         Security.insertProviderAt(new BouncyCastleProvider(), 1);
         X509EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(Base64.decodeBase64(publicKeyClient));
         KeyFactory keyFactory = KeyFactory.getInstance(ALGORITHM, PROVIDER);
@@ -145,13 +144,14 @@ public class Crypto {
         BufferedInputStream bufferedInputStream = fromBitmapToBIS(bitmap);
         byte[] buffer = new byte[KEY_SIZE];
         int length;
-        while (bufferedInputStream.available() != 0){
+        while (bufferedInputStream.available() != 0) {
             length = bufferedInputStream.read(buffer);
             signature.update(buffer, 0, length);
         }
         bufferedInputStream.close();
         return (signature.verify(Base64.decodeBase64(signatureClient)));
     }
+
     public byte[] getPublicKey() {
         return publicKey;
     }
