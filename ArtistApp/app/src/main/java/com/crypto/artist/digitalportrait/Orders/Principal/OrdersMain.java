@@ -91,7 +91,7 @@ public class OrdersMain extends BottomSheetDialogFragment {
                 for(QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots) {
                     Datos datos = documentSnapshot.toObject(Datos.class);
                     datos.setDocumentId(documentSnapshot.getId());
-
+                    if("Enviado".equalsIgnoreCase(datos.getEstado()))
                     orders.add(new Datos(datos.getDescripcion(),datos.getFecha(),datos.getImagen(),datos.getEmail(),datos.getSin(),datos.getKeyAndIV(),datos.getPassword(),datos.getIv(),datos.getSignatureClient(),datos.getPublicKeyClient(),datos.getDocumentId(),datos.getEstado()));
                 }
 

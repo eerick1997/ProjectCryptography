@@ -69,6 +69,7 @@ public class CompletedOrder extends BottomSheetDialogFragment {
                 for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                     Datos data = documentSnapshot.toObject(Datos.class);
                     data.setDocumentId(documentSnapshot.getId());
+                    if(data.getEmail().equalsIgnoreCase(strEmail) && data.getEstado().equalsIgnoreCase("Terminado"))
                     datos.add(new Datos(data.getDescripcion(), data.getFecha(), data.getImagen(), data.getEmail(),
                             data.getEstado(), data.getPublicKeyArtist(), data.getSignatureArtist(), data.getImageArtist(),
                             data.getPublicKeyClient(), data.getSignatureClient()));
