@@ -107,10 +107,6 @@ public class DrawerMain extends AppCompatActivity
             getSupportActionBar().setTitle(R.string.title_sent);
             getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new SentMain()).commit();
             lastId = id;
-        }  else if (id == R.id.nav_contract && lastId != R.id.nav_contract) {
-            getSupportActionBar().setTitle(R.string.title_contract);
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new SentMain()).commit();
-            lastId = id;
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

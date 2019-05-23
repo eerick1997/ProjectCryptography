@@ -42,4 +42,5 @@
     <string name="title_contract">Contratos pendientes</string>
     <string name="not_services_found">No hay servicios de correo electrónico deisponibles.</string>
     <string name="title_email">Enviar correo</string>
+    <string name="menu_received">Recibidos</string>
 </resources>
