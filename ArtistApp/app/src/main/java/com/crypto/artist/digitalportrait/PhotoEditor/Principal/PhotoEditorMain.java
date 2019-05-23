@@ -435,6 +435,7 @@ public class PhotoEditorMain extends AppCompatActivity implements FilterListFrag
                     crypto.signGenerator(decodedByte);
                     order.put("publicKeyArtist",new String((crypto.getPublicKey())));
                     order.put("signatureArtist",new String((crypto.getSignature())));
+                    order.put("estado","Terminado");
                     Log.i("DOCUMENT",getIntent().getExtras().getString("documentName"));
 
                     db.collection("pedidos").document(getIntent().getExtras().getString("documentName"))
