@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.crypto.artist.digitalportrait.Orders.Adapter.*;
 import com.crypto.artist.digitalportrait.Orders.Objects.Contract;
+import com.crypto.artist.digitalportrait.Orders.Objects.Datos;
 import com.crypto.artist.digitalportrait.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.firebase.firestore.CollectionReference;
@@ -27,41 +28,42 @@ import java.util.List;
 
 import static com.crypto.artist.digitalportrait.Utilities.Reference.*;
 
-public class ContractsMain extends BottomSheetDialogFragment {
+public class SentMain extends BottomSheetDialogFragment {
 
-    private static final String TAG = "ContractsMain";
+    private static final String TAG = "SentMain";
 
     @SuppressLint("WrongConstant")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View itemView = inflater.inflate(R.layout.activity_contract_main, container, false);
+        View itemView = inflater.inflate(R.layout.activity_sent_main, container, false);
 
-        final List<Contract> contracts = new ArrayList<>();
+        final List<Datos> enviados = new ArrayList<>();
 
-        final RecyclerView recyclerOrders = itemView.findViewById(R.id.recycler_contracts);
+        final RecyclerView recyclerSents = itemView.findViewById(R.id.recycler_sents);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        CollectionReference datosReference = db.collection(CONTRACTS);
+        CollectionReference datosReference=db.collection("pedidos");
         datosReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                contracts.clear();
-                if (e != null) {
+                enviados.clear();
+                if(e!=null){
                     return;
                 }
-                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                    Contract contract = documentSnapshot.toObject(Contract.class);
-                    contract.setDocumentId(documentSnapshot.getId());
-                    contracts.add(new Contract(contract.getPublicKey(), contract.getEmail(), contract.getDate()));
+                for(QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots) {
+                    Datos datos = documentSnapshot.toObject(Datos.class);
+                    datos.setDocumentId(documentSnapshot.getId());
+                    if(datos.getEstado().equals("Terminado"))
+                        enviados.add(new Datos(datos.getDescripcion(),datos.getFecha(),datos.getImagen(),datos.getEmail(),datos.getSin(),datos.getKeyAndIV(),datos.getPassword(),datos.getIv(),datos.getSignature(),datos.getPublicKeyClient(),datos.getDocumentId()));
                 }
 
                 //Creamos el adaptador
-                ContractsAdapter contractsAdapter = new ContractsAdapter(getContext(), contracts);
+                SentAdapter sentAdapter = new SentAdapter(getContext(), enviados);
                 //Colocamos el adaptador
-                recyclerOrders.setHasFixedSize(true);
-                recyclerOrders.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-                recyclerOrders.setAdapter(contractsAdapter);
+                recyclerSents.setHasFixedSize(true);
+                recyclerSents.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+                recyclerSents.setAdapter(sentAdapter);
             }
         });
 

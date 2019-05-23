@@ -102,11 +102,6 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
 
         IVGenerator.init(IV_SIZE);
 
-
-
-
-
-
         byte[] ivUse=Base64.decode(orders.get(position).getIv().toString().getBytes());
         byte[] passUse=Base64.decode(orders.get(position).getPassword().toString().getBytes());
 
