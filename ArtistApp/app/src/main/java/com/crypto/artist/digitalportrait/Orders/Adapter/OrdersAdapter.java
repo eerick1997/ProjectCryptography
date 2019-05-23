@@ -77,6 +77,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
                     KeyGenerator keyGenerator = KeyGenerator.getInstance(ALGORITHM);
                     keyGenerator.init(KEY_SIZE);
                     final byte[] passAux = Base64.decode(holder.ePass.getText().toString().getBytes());
+                    Log.i("passAUX",new String(holder.ePass.getText().toString().getBytes()));
                     final KeyGenerator IVGenerator = KeyGenerator.getInstance(ALGORITHM);
                     final byte[] ivAux = Base64.decode(holder.eIV.getText().toString().getBytes());
                     comenzar(position, passAux, ivAux, IVGenerator);
@@ -92,9 +93,6 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
     private void comenzar(int position,byte[]passAux,byte[]ivAux,KeyGenerator IVGenerator)
     {
 
-
-
-
         byte[]plainText=Base64.decode(orders.get(position).getImagen().toString().getBytes());
 
         Crypto crypto=new Crypto(context);
@@ -102,14 +100,8 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
 
         IVGenerator.init(IV_SIZE);
 
-        byte[] ivUse=Base64.decode(orders.get(position).getIv().toString().getBytes());
-        byte[] passUse=Base64.decode(orders.get(position).getPassword().toString().getBytes());
 
-
-
-
-
-        CipherParameters ivAndKey = new ParametersWithIV(new KeyParameter(passUse), ivUse);
+        CipherParameters ivAndKey = new ParametersWithIV(new KeyParameter(passAux), ivAux);
 
         try {
             final byte[] decryptedMessage=crypto.decrypt(plainText,ivAndKey);
@@ -120,7 +112,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
             Bitmap decodedByte = BitmapFactory.decodeByteArray(decryptedMessage, 0, decryptedMessage.length);
 
 //            Log.i("PBCLIENT",orders.get(position).getPublicKeyClient());
-            byte[]signa=orders.get(position).getSignature().getBytes();
+            byte[] signa=orders.get(position).getSignatureClient().getBytes();
             byte[] pubK=orders.get(position).getPublicKeyClient().getBytes();
 
             Log.i("SIG",new String(signa));
