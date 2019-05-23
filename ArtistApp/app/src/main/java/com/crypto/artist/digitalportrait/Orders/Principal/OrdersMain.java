@@ -92,7 +92,7 @@ public class OrdersMain extends BottomSheetDialogFragment {
                     Datos datos = documentSnapshot.toObject(Datos.class);
                     datos.setDocumentId(documentSnapshot.getId());
 
-                    orders.add(new Datos(datos.getDescripcion(),datos.getFecha(),datos.getImagen(),datos.getEmail(),datos.getSin(),datos.getKeyAndIV(),datos.getPassword(),datos.getIv(),datos.getSignature(),datos.getPublicKeyClient(),datos.getDocumentId()));
+                    orders.add(new Datos(datos.getDescripcion(),datos.getFecha(),datos.getImagen(),datos.getEmail(),datos.getSin(),datos.getKeyAndIV(),datos.getPassword(),datos.getIv(),datos.getSignatureClient(),datos.getPublicKeyClient(),datos.getDocumentId(),datos.getEstado()));
                 }
 
                 //Creamos el adaptador

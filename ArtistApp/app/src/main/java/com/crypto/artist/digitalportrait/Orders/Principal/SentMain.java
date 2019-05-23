@@ -55,7 +55,7 @@ public class SentMain extends BottomSheetDialogFragment {
                     Datos datos = documentSnapshot.toObject(Datos.class);
                     datos.setDocumentId(documentSnapshot.getId());
                     if(datos.getEstado().equals("Terminado"))
-                        enviados.add(new Datos(datos.getDescripcion(),datos.getFecha(),datos.getImagen(),datos.getEmail(),datos.getSin(),datos.getKeyAndIV(),datos.getPassword(),datos.getIv(),datos.getSignature(),datos.getPublicKeyClient(),datos.getDocumentId()));
+                        enviados.add(new Datos(datos.getDescripcion(),datos.getFecha(),datos.getImagen(),datos.getEmail(),datos.getSin(),datos.getKeyAndIV(),datos.getPassword(),datos.getIv(),datos.getSignatureClient(),datos.getPublicKeyClient(),datos.getDocumentId(),datos.getEstado()));
                 }
 
                 //Creamos el adaptador
