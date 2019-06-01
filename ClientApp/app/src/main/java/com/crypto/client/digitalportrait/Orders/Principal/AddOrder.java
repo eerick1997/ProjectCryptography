@@ -144,29 +144,6 @@ public class AddOrder extends AppCompatActivity {
         order.put(SIGNATURECLIENT, new String((crypto.getSignature())));
         order.put(STATE, "Enviado");
 
-        final String publicKeyA;
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        CollectionReference datosReference = db.collection(ARTISTA);
-        datosReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                datos.clear();
-                if (e != null)
-                    return;
-
-                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                    Datos data = documentSnapshot.toObject(Datos.class);
-                    data.setDocumentId(documentSnapshot.getId());
-                    if(data.getPublicKeyArtist() != null)
-                        publicKeyA = data.getPublicKeyArtist();
-                }
-            }
-        });
-
-        String passencrypt = crypto.RSAEncrypt(crypto.getPrivateKey(),Base64.toBase64String(password));
-        String passencrypt2 = crypto.RSAEncrypt(publicKeyA,passencrypt);
 
         Log.i("SIG", new String(crypto.getSignature()));
         boolean verify = crypto.verifySign(decodedByte, new String(crypto.getPublicKey()).getBytes(), new String(crypto.getSignature()).getBytes());
@@ -179,7 +156,7 @@ public class AddOrder extends AppCompatActivity {
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
                         Toast.makeText(getApplicationContext(), getString(R.string.order_sent_successfully), Toast.LENGTH_LONG).show();
-                        sendKeyByEmail(passencrypt2, IV);
+                        sendKeyByEmail(password, IV);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -226,12 +203,12 @@ public class AddOrder extends AppCompatActivity {
         }
     }
 
-    private void sendKeyByEmail(String password, byte[] IV) {
+    private void sendKeyByEmail(byte[] password, byte[] IV) {
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("message/rfc822");
         i.putExtra(Intent.EXTRA_EMAIL, new String[]{strEmail, "vargas.erick030997@gmail.com", "albertoesquivel.97@gmail.com"});
         i.putExtra(Intent.EXTRA_SUBJECT, "Tu llave privada");
-        i.putExtra(Intent.EXTRA_TEXT, password + " \n\nvector de inicialización\n\n" + new String(Base64.encode(IV)));
+        i.putExtra(Intent.EXTRA_TEXT, new String(Base64.encode(password)) + " \n\nvector de inicialización\n\n" + new String(Base64.encode(IV)));
         try {
             startActivity(Intent.createChooser(i, getString(R.string.title_email)));
         } catch (android.content.ActivityNotFoundException ex) {

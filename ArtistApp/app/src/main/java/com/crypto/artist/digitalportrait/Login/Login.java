@@ -46,7 +46,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Context contexto = this;
+
         findViewById(R.id.btn_sign_in).setOnClickListener(this);
         findViewById(R.id.btn_sign_out).setOnClickListener(this);
 
@@ -58,13 +58,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
 
         firebaseAuth = FirebaseAuth.getInstance();
-
-        Preferences preferences = new Preferences(context);
-        if (preferences.get("publicKey") == null){
-            final Crypto crypto = new Crypto(contexto);
-            crypto.RSAkeysGenerator();
-        }
-
     }
 
     @Override

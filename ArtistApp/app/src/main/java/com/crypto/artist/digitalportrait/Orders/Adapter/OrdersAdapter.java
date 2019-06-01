@@ -76,40 +76,13 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
             public void onClick(View v) {
 
                 try {
-                    final String publicKeyC;
-
-                    FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-                    CollectionReference datosReference = db.collection(CLIENTE1);
-                    datosReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
-                        @Override
-                        public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                            datos.clear();
-                            if (e != null)
-                                return;
-
-                            for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                                Datos data = documentSnapshot.toObject(Datos.class);
-                                data.setDocumentId(documentSnapshot.getId());
-                                if(data.getPublicKeyArtist() != null)
-                                    publicKeyC = data.getPublicKeyClient();
-                            }
-                        }
-                    });
-
-
                     KeyGenerator keyGenerator = KeyGenerator.getInstance(ALGORITHM);
                     keyGenerator.init(KEY_SIZE);
                     final byte[] passAux = Base64.decode(holder.ePass.getText().toString().getBytes());
-                    //descifrar la clave de AES
-                    byte[] passdecrypt = crypto.RSADecrypt(crypto.getPrivateKey(),Base64.toBase64String(passAux));//Doble descifrado
-                    byte[] passdecrypt2 = crypto.RSADecrypt(publicKeyC ,Base64.toBase64String(passdecrypt));
-
-
                     Log.i("passAUX",new String(holder.ePass.getText().toString().trim().getBytes()));
                     final KeyGenerator IVGenerator = KeyGenerator.getInstance(ALGORITHM);
                     final byte[] ivAux = Base64.decode(holder.eIV.getText().toString().trim().getBytes());
-                    comenzar(position, passdecrypt2, ivAux, IVGenerator);
+                    comenzar(position, passAux, ivAux, IVGenerator);
                 } catch (NoSuchAlgorithmException e) {
                     Log.e(TAG, "onClick: ", e);
                 }
@@ -128,7 +101,6 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
 
 
         IVGenerator.init(IV_SIZE);
-
 
 
         CipherParameters ivAndKey = new ParametersWithIV(new KeyParameter(passAux), ivAux);
