@@ -76,8 +76,12 @@ public class OrdersMain extends BottomSheetDialogFragment {
                 for(QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots) {
                     Datos datos = documentSnapshot.toObject(Datos.class);
                     datos.setDocumentId(documentSnapshot.getId());
-                    if(datos.getEmail().equalsIgnoreCase(strEmail) && datos.getEstado().equalsIgnoreCase("Enviado"))
-                    orders.add(new Order(datos.getDescripcion(),datos.getFecha()));
+                    try {
+                        if (datos.getEmail().equalsIgnoreCase(strEmail) && datos.getEstado().equalsIgnoreCase("Enviado"))
+                            orders.add(new Order(datos.getDescripcion(), datos.getFecha()));
+                    } catch (Exception ex){
+                        Log.e(TAG, "onEvent: ", ex);
+                    }
                 }
 
                 //Creamos el adaptador

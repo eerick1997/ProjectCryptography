@@ -13,6 +13,7 @@
     <uses-feature
         android:name="android.hardware.camera2"
         android:required="false" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,11 +21,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".CopyToClipboard"></activity>
         <activity
             android:name=".Orders.Principal.AddOrder"
             android:label="@string/title_activity_add_order"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Login.Login"
             android:theme="@style/AppTheme.NoActionBar.FullScreen">
@@ -34,7 +35,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".DrawerMain"
             android:label="@string/title_activity_drawer_main"
@@ -50,7 +50,6 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Orders.Principal.ShowResult"
             android:theme="@style/AppTheme.NoActionBar.FullScreen">

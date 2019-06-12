@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 
+import com.crypto.client.digitalportrait.CopyToClipboard;
 import com.crypto.client.digitalportrait.CryptoUtils.Crypto;
 import com.crypto.client.digitalportrait.Orders.Utils.BitmapUtils;
 import com.crypto.client.digitalportrait.Utilities.Preferences;
@@ -44,6 +45,7 @@ import org.spongycastle.crypto.params.ParametersWithIV;
 import org.spongycastle.util.encoders.Base64;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileDescriptor;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -204,7 +206,7 @@ public class AddOrder extends AppCompatActivity {
     }
 
     private void sendKeyByEmail(byte[] password, byte[] IV) {
-        Intent i = new Intent(Intent.ACTION_SEND);
+        /*Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("message/rfc822");
         i.putExtra(Intent.EXTRA_EMAIL, new String[]{strEmail, "vargas.erick030997@gmail.com", "albertoesquivel.97@gmail.com"});
         i.putExtra(Intent.EXTRA_SUBJECT, "Tu llave privada");
@@ -213,7 +215,11 @@ public class AddOrder extends AppCompatActivity {
             startActivity(Intent.createChooser(i, getString(R.string.title_email)));
         } catch (android.content.ActivityNotFoundException ex) {
             Toast.makeText(AddOrder.this, getString(R.string.not_services_found), Toast.LENGTH_SHORT).show();
-        }
+        }*/
+        Intent intent = new Intent(AddOrder.this, CopyToClipboard.class);
+        intent.putExtra("KEY", new String(Base64.encode(password)));
+        intent.putExtra("VECTOR", new String(Base64.encode(IV)));
+        startActivity(intent);
     }
 
     @Override
